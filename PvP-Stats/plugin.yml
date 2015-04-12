@@ -2,6 +2,7 @@ name: PvP-Stats
 author: CrazedMiner
 description: Counts player kills and deaths to form a kill to death ratio
 version: 1.0
+main: /CrazedMiner/Main
 website: CrazedMiner.weebly.com
 
 commands:
