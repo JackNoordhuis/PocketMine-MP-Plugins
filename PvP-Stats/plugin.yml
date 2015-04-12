@@ -1,0 +1,17 @@
+name: PvP-Stats
+author: CrazedMiner
+description: Counts player kills and deaths to form a kill to death ratio
+version: 1.0
+website: CrazedMiner.weebly.com
+
+commands:
+    stats:
+        description: Shows player kills, deaths and ratio
+        permission: pvp-stats.command.stats
+permissions:
+    pvp-stats:
+        description: PvP-Stats main Permission
+        pvp-stats.command:
+            description: PvP-Stats main Commands Permission
+            pvp-stats.command.stats:
+                description: PvP-Stats /stat permission node
