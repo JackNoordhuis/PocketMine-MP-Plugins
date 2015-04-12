@@ -36,7 +36,7 @@ class Main extends PluginBase implements Listener {
     }
     
     public function onDisable(){
-      $this->getLogger()->info(TextFormat::RED . "PvP Stats v1.0.0 by CrazedMiner is now Didabled!");
+      $this->getLogger()->info(TextFormat::RED . "PvP Stats v1.0.0 by CrazedMiner is now Disabled!");
       }
     
     public function onPlayerDeath(PlayerDeathEvent $event){
