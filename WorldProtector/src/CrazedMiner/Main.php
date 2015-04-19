@@ -2,7 +2,7 @@
 /*
  * WorldProtector plugin for PocketMine-MP
  * Copyright (C) 2014 Jack Noordhuis (CrazedMiner) 
- * <https://github.com/CrazedMiner/PocketMine-MP-Plugins/tree/master/PvP-Stats>
+ * <https://github.com/CrazedMiner/PocketMine-MP-Plugins/tree/master/WorldProtector>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
