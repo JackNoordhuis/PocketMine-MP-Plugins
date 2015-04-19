@@ -49,7 +49,7 @@ class Main extends PluginBase implements Listener {
     
     public function onBlockPlace(BlockPlaceEvent $event) {
         $player = $event->getPlayer();
-        if(!$player->haspermission("worldprotector.block.place")) {
+        if(!($player->haspermission("worldprotector.block.place"))) {
             $event->setCancelled(true);
         }else {
             $event->setCancelled(false);
