@@ -1,6 +1,14 @@
 name: MoreCommands
 author: CrazedMiner
-description: More awesome commands for your server
 version: 1.0
-main: /CrazedMiner/Main
-website: CrazedMiner.weebly.com
+description: Simple Plugin that Adds More Commands to your PocketMine Server!
+main: \MoreCommands\Main
+api: 1.8.0
+
+commands:
+    spawn:
+        description: "Teleports you to Spawn"
+    hub:
+        description: "Teleports you to the Hub"
+    lobby:
+        description: "Teleports you to the Lobby"
