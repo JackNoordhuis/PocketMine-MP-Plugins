@@ -1,0 +1,10 @@
+#MoreCommands v1.0 Config File
+#
+#
+#Teleportation Commands:
+#/Spawn Command Message. Use \n for a new line
+Teleport to Spawn Message: "----------------------------------------\nTeleporting to Spawn\n----------------------------------------"
+#/Hub Command Message. Use \n for a new line
+Teleport to Hub Message: "----------------------------------------\nTeleporting to Hub\n----------------------------------------"
+#/Lobby Command Message. Use \n for a new line
+Teleport to Lobby Message: "----------------------------------------\nTeleporting to Lobby\n----------------------------------------"
