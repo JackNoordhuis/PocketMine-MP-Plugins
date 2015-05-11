@@ -4,7 +4,7 @@ Repository full of goodies (all my awesome PocketMine-MP Plugins)
 You may edit and redistribute any plugins and/or code in this repository as long as you state in your work that the original code was by me and have a link to this repository.
 
 Finished plugins in this repo:
-- None at the current time.
+- WorldProtector v1.0: Protects your Server from players breaking blocks, placing blocks and taking damage.
 
 Unfinished Plugins in this repo:
 - PvP-Stats- Counts player kills and death and forums a kill death ratio.
