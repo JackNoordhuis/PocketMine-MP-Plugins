@@ -1,9 +1,8 @@
 name: WorldProtector
 author: CrazedMiner
-description: Protects your worlds
 version: 1.0
-main: CrazedMiner/Main
-website: CrazedMiner.weebly.com
+description: Protects your worlds
+main: CrazedMiner\Main
 api: 1.4.1
 
 permissions:
@@ -20,4 +19,7 @@ permissions:
                 default: op
             worldprotector.block.place:
                 description: Permission node that disables block placing
+                default: op
+            worldprotector.player.hurt:
+                description: Permission node that disables player damage
                 default: op
