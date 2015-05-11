@@ -13,20 +13,23 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
-*/
+ */
 
 namespace CrazedMiner;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
 use pocketmine\utils\TextFormat;
+use pocketmine\Player;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\entity\EntityDamageEvent;
 
 class Main extends PluginBase implements Listener {
   
     public function onLoad() {
-        $this->getLogger()->info(TextFormat::YELLOW . "Loading WorldProtector Stats v1.0.0 by CrazedMiner....");
+        $this->getLogger()->info(TextFormat::YELLOW . "Loading WorldProtector v1.0.0 by CrazedMiner....");
     }
   
     public function onEnable() {
@@ -65,4 +68,16 @@ class Main extends PluginBase implements Listener {
             $event->setCancelled(false);
         }
     }
+    
+    public function onHurt(EntityDamageEvent $event) {
+        $player = $event->getEntity();
+        if($player instanceof Player) {
+            if(!($player->haspermission("worldprotetor.player.hurt"))) {
+                $event->setCancelled(true);
+            }else {
+                $event->setCancelled(false);
+            }
+        }  
+    }
+    
 }
