@@ -1,0 +1,25 @@
+name: WorldProtector
+author: CrazedMiner
+version: 1.0
+description: Protects your worlds
+main: CrazedMiner\Main
+api: 1.4.1
+
+permissions:
+    worldprotector:
+        description: Main permission node for all
+        default: op
+        
+        worldprotector.block:
+            description: Main permission node for block things
+            default: op
+            
+            worldprotector.block.break:
+                description: Permission node that disables block breaking
+                default: op
+            worldprotector.block.place:
+                description: Permission node that disables block placing
+                default: op
+            worldprotector.player.hurt:
+                description: Permission node that disables player damage
+                default: op
