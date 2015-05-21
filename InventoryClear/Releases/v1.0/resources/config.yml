@@ -1,0 +1,12 @@
+#InventoryClear v1.0 Config File
+#
+#Use true to Enable or put anything else to Disable
+#
+#Clear Inventory on Join?
+Clear on Join: true
+#
+#Clear Inventory on Death?
+Clear on Death: true
+#
+#Clear on Quit?
+Clear on Quit: true
