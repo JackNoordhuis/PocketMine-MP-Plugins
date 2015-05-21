@@ -1,0 +1,6 @@
+name: InventoryClear
+author: CrazedMiner
+version: 1.0
+description: Simple plugin that clears a Players Inventory on certain events!
+main: \InventoryClear\Main
+api: [1.11.0]
