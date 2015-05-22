@@ -33,6 +33,10 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\item\Item;
+use pocketmine\command\CommandSender;
+use pocketmine\command\Command;
+use pocketmine\Player;
+
 
 class Main extends PluginBase implements Listener {
 
@@ -51,6 +55,32 @@ class Main extends PluginBase implements Listener {
 
     public function onDisable() {
         $this->getLogger()->info(TextFormat::DARK_GREEN . "InventoryClear v1.0 By CrazedMiner Disabled!");
+    }
+    
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+        if(strtolower($cmd->getName()) === "clearinv") {
+            if($sender->hasPermission("inventoryclear.command.clearinv")) {
+                if(count($args) === 1) {
+                    $name = $args[0];
+                    $target = $this->getServer()->getPlayer($name);
+                    if($target instanceof Player) {
+                    $target->getInventory()->setContents(array(Item::get(0, 0, 0)));
+                    $target->sendMessage("Your inventory has been cleared by " . $sender->getName());
+                    $sender->sendMessage("Cleared " . $target->getName() . "'s inventory.");
+                    }
+                    else {
+                        $sender->sendMessage("Sorry, " . $args[0] . " is not online!");
+                    }
+                
+                }
+                else {
+                    $sender->sendMessage("Usage: /clearinv <playername>");
+                }
+            }
+            else {
+                $sender->sendMessage("You don't have permissions to use this command.");
+            }
+        }
     }
     
     public function onJoin(PlayerJoinEvent $event) {
@@ -73,5 +103,5 @@ class Main extends PluginBase implements Listener {
             $event->getPlayer()->getInventory()->setContents(array(Item::get(0, 0, 0)));
         }
     }
-
+    
 }
