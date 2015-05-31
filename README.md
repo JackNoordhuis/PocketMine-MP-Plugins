@@ -15,6 +15,3 @@ Unfinished Plugins in this repo:
 - MoreCommands- Adds more usefull commands to your server.
 - Item-Block- Blocks items you specify in the Config from being used.
 - CommandRunner- Runs commands you specify in the config to be run on certain events.
-
-
-
