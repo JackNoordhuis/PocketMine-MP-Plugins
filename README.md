@@ -6,6 +6,7 @@ You may edit and redistribute any plugins and/or code in this repository as long
 Finished plugins in this repo:
 - WorldProtector v1.0: Protects your Server from players breaking blocks, placing blocks and taking damage.
 - InventoryClear v1.1: Clear players inventory on Join, Leave, Death and with a command.
+- KillMoneyFix v1.0: Players get the set amount of money for killing a player.
 
 Unfinished Plugins in this repo:
 - PvP-Stats- Counts player kills and death and forums a kill death ratio.
