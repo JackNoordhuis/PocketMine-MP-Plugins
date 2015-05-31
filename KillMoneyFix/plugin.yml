@@ -1,0 +1,6 @@
+name: KillMoneyFix
+author: CrazedMiner
+version: 1.0
+description: Gives players money when they kill another player
+main: \KillMoneyFix\Main
+api: [1.8.0]
