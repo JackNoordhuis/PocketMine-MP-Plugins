@@ -28,59 +28,29 @@ namespace MoreCommands;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
-use pocketmine\Player;
 
-class Main extends PluginBase{
+use MoreCommands\Commands\Spawn;
+use MoreCommands\Commands\Hub;
+use MoreCommands\Commands\Lobby;
+
+class Main extends PluginBase {
     
-  public function onLoad(){
-        $this->getLogger()->info(TextFormat::BLUE . "Loading MoreCommands v1.0 By CrazedMiner....");
+  public function onLoad() {
+        $this->getLogger()->info(TextFormat::YELLOW . "Loading MoreCommands v1.0 By CrazedMiner....");
     }
     
-    public function onEnable(){
-        $this->saveDefaultConfig();
-        $config = $this->getConfig();
-        $this->spawnm = $config->get("Teleport to Spawn Message");
-        $this->hubm = $config->get("Teleport to Hub Message");
-        $this->lobbym = $config->get("Teleport to Lobby Message");
+    public function onEnable() {
+        if(!file_exists($this->getDataFolder() . "config.yml")) {
+            @mkdir($this->getDataFolder());
+             file_put_contents($this->getDataFolder() . "config.yml",$this->getResource("config.yml"));
+        }
+        $this->getCommand("spawn")->setExecutor(new Commands\Spawn($this));
+        $this->getCommand("hub")->setExecutor(new Commands\Hub($this));
+        $this->getCommand("lobby")->setExecutor(new Commands\Lobby($this));
         $this->getLogger()->info(TextFormat::GREEN . "MoreCommands v1.0 By CrazedMiner Enabled!");
     }
     
-    public function onDisable(){
-        $this->getLogger()->info(TextFormat::GREEN . "MoreCommands v1.0 By CrazedMiner Disabled!");
-    }
-    
-    public function onCommand(CommandSender $sender, Command $command,$label,array $args){
-    $defaultspawn = $this->getServer()->getDefaultLevel()->getSpawnLocation();
-        switch($command->getName()){
-            case "spawn":{
-                if($sender instanceof Player){
-                    $sender->sendMessage($this->spawnm);
-                    $sender->getPlayer()->teleport($defaultspawn);
-                }else{
-                    $sender->sendMessage(TextFormat::RED . "Command must be used in-game!");
-                }
-                break;
-            }
-            case "hub":{
-                if($sender instanceof Player){
-                    $sender->sendMessage($this->hubm);
-                    $sender->getPlayer()->teleport($defaultspawn);
-                }else{
-                    $sender->sendMessage(TextFormat::RED . "Command must be used in-game!");
-                }
-                break;
-            }
-            case "lobby":{
-                if($sender instanceof Player){
-                    $sender->sendMessage($this->lobbym);
-                    $sender->getPlayer()->teleport($defaultspawn);
-                }else{
-                    $sender->sendMessage(TextFormat::RED . "Command must be used in-game!");
-                }
-                break;
-            }
-        }
+    public function onDisable() {
+        $this->getLogger()->info(TextFormat::LIGHT_PURPLE . "MoreCommands v1.0 By CrazedMiner Disabled!");
     }
 }
