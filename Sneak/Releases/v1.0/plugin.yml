@@ -1,0 +1,25 @@
+name: Sneak
+author: CrazedMiner
+version: 1.0.0
+description: Allows players to sneak by using a Command!
+main: Sneak\Main
+api: [1.12.0]
+
+commands:
+    sneak-on:
+        description: "The sending player starts sneaking"
+    sneak-off:
+        description: "The sending player stopd sneaking"
+
+permissions:
+    sneak.command:
+        description: Sneak main permission node
+        default: op
+        
+        sneak.command.on:
+            description: Sender starts sneaking
+            default: op
+            
+        sneak.command.off:
+        description: Sender stops sneaking
+        default: op
