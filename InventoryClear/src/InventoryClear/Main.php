@@ -64,7 +64,7 @@ class Main extends PluginBase implements Listener {
                     $name = $args[0];
                     $target = $this->getServer()->getPlayer($name);
                     if($target instanceof Player) {
-                    $target->getInventory()->setContents(array(Item::get(0, 0, 0)));
+                    $target->getInventory()->clearAll();
                     $target->sendMessage("Your inventory has been cleared by " . $sender->getName());
                     $sender->sendMessage("Cleared " . $target->getName() . "'s inventory.");
                     }
@@ -86,21 +86,21 @@ class Main extends PluginBase implements Listener {
     public function onJoin(PlayerJoinEvent $event) {
         $this->clearjoin = $this->getConfig()->get("Clear on Join");
         if($this->clearjoin == true) {
-            $event->getPlayer()->getInventory()->setContents(array(Item::get(0, 0, 0)));
+            $event->getPlayer()->getInventory()->clearAll();
         }
     }
     
     public function onDeath(PlayerDeathEvent $event) {
         $this->clearjoin = $this->getConfig()->get("Clear on Death");
         if($this->clearjoin == true) {
-            $event->setDrops(array(Item::get(0, 0, 0)));
+            $event->setDrops(array());
         }
     }
     
     public function onQuit(PlayerQuitEvent $event) {
         $this->clearjoin = $this->getConfig()->get("Clear on Quit");
         if($this->clearjoin == true) {
-            $event->getPlayer()->getInventory()->setContents(array(Item::get(0, 0, 0)));
+            $event->getPlayer()->getInventory()->clearAll();
         }
     }
     
