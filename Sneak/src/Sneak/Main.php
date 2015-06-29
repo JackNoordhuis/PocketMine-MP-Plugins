@@ -35,59 +35,92 @@ use pocketmine\entity\Entity;
 
 class Main extends PluginBase {
     
-    private $players = array();
+    private $sneaking = array();
 
     public function onLoad() {
-        $this->getLogger()->info(TextFormat::BLUE . "Sneak v1.0 By CrazedMiner....");
+        $this->getLogger()->info(TextFormat::BLUE . "Loading Sneak v1.1 By CrazedMiner....");
     }
 
     public function onEnable() {
-        $this->getLogger()->info(TextFormat::GREEN . "Sneak v1.0 By CrazedMiner Enabled!");
+        $this->getLogger()->info(TextFormat::GREEN . "Sneak v1.1 By CrazedMiner Enabled!");
     }
 
     public function onDisable() {
-        $this->getLogger()->info(TextFormat::GREEN . "Sneak v1.0 By CrazedMiner Disabled!");
+        $this->getLogger()->info(TextFormat::GREEN . "Sneak v1.1 By CrazedMiner Disabled!");
     }
     
     public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
-        if(strtolower($cmd->getName() === "sneak-on")) {
-            if($sender instanceof Player) {
-                if($sender->hasPermission("sneak.command.on")) {
-                    $this->enableSneak($sender);
+        if(strtolower($cmd->getName()) === "sneak") {
+            if(isset($args[0])) {
+                $name = $args[0];
+                $target = $this->getServer()->getPlayer($name);
+                if($sender->hasPermission("sneak.command.other")){
+                    if($target instanceof Player) {
+                        if($this->isSneaking($target)) {
+                            $this->disableSneak($target, $sender);
+                        }
+                        else {
+                            $this->enableSneak($target, $sender);
+                        }
+                    }
+                    else {
+                        $sender->sendMessage(TextFormat::RED . "Sorry, " . $args[0] . " is not online!");
+                    }
                 }
                 else {
                     $sender->sendMessage(TextFormat::RED . "You don't have permissions to use this command.");
                 }
+                
             }
             else {
-                $sender->sendMessage(TextFormat::RED . "Please run this command in-game!");
-            }
-        }
-        elseif(strtolower($cmd->getName() === "sneak-off")) {
-            if($sender instanceof Player) {
-                if($sender->hasPermission("sneak.command.off")) {
-                    $this->disableSneak($sender);
+                if($sender instanceof Player) {
+                    if($sender->hasPermission("sneak.command.self")) {
+                        if($this->isSneaking($sender)) {
+                            $this->disableSneak($sender, NULL);
+                        }
+                        else {
+                            $this->enableSneak($sender, NULL);
+                        }
+                    }
+                    else {
+                        $sender->sendMessage(TextFormat::RED . "You don't have permissions to use this command.");
+                    }
                 }
                 else {
-                    $sender->sendMessage(TextFormat::RED . "You don't have permissions to use this command.");
+                    $sender->sendMessage(TextFormat::RED . "Please run this command in-game!");
                 }
-            }
-            else {
-                $sender->sendMessage(TextFormat::RED . "Please run this command in-game!");
             }
         }
     }
     
-    public function enableSneak(Player $player) {
-        $this->players[$player->getName()] = $player->getName();
+    public function isSneaking(Player $player) {
+        return in_array($player->getName(), $this->sneaking);
+    }
+    
+    public function enableSneak($player, $sender) {
         $player->setDataFlag(Entity::DATA_FLAGS, Entity::DATA_FLAG_SNEAKING, true);
-        $player->sendMessage(TextFormat::GOLD . "You have Enabled sneaking!");
+        $this->sneaking[$player->getName()] = $player->getName();
+        
+        if($sender !== NULL) {
+            $player->sendMessage(TextFormat::AQUA . $sender->getName() . TextFormat::RESET . TextFormat::GOLD . " has Enabled Sneaking for you!");
+            $sender->sendMessage(TextFormat::GOLD . "Enabled Sneaking for " . TextFormat::AQUA . $player->getName()) . TextFormat::RESET . TextFormat::GOLD . "!";
+        }
+        else {
+            $player->sendMessage(TextFormat::GOLD . "You have Enabled sneaking!");
+        }
     }
     
-    public function disableSneak(Player $player) {
-        unset($this->players[$player->getName()]);
+    public function disableSneak($player, $sender) {
         $player->setDataFlag(Entity::DATA_FLAGS, Entity::DATA_FLAG_SNEAKING, false);
-        $player->sendMessage(TextFormat::GOLD . "You have Disabled sneaking!");
+        unset($this->sneaking[$player->getName()]);
+        
+        if($sender !== NULL) {
+            $player->sendMessage(TextFormat::AQUA . $sender->getName() . TextFormat::RESET . TextFormat::GOLD . " has Disabled Sneaking for you!");
+            $sender->sendMessage(TextFormat::GOLD . "Disabled Sneaking for " . TextFormat::AQUA . $player->getName() . TextFormat::RESET . TextFormat::GOLD . "!");
+        }
+        else {
+            $player->sendMessage(TextFormat::GOLD . "You have Disabled sneaking!");
+        }
     }
 
 }
