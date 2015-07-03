@@ -1,0 +1,6 @@
+name: HealthStatus
+author: CrazedMiner
+version: 1.0
+description: Players get their Health shown above their head!
+main: HealthStatus\Main
+api: [1.12.0]
