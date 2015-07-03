@@ -49,7 +49,7 @@ class Main extends PluginBase implements Listener {
     
     public function registerEvents() {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        if(is_dir($this->getServer()->getPluginPath() . "PurePerms")){
+        if(is_dir($this->getServer()->getPluginPath() . "PureChat")){
             $this->getServer()->getPluginManager()->registerEvents(new GroupChange($this), $this);
         }
         elseif(is_dir($this->getServer()->getPluginPath() . "EssentialsPE")) {
