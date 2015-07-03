@@ -40,11 +40,11 @@ class Main extends PluginBase implements Listener {
     public function onEnable() {
         $this->saveDefaultConfig();
         $this->registerEvents();
-        $this->getLogger()->info(TextFormat::GREEN . "HealthStatus v1.0 By CrazedMiner Enabled!");
+        $this->getLogger()->info(TextFormat::GREEN . "HealthStatus Beta By CrazedMiner Enabled!");
     }
 
     public function onDisable() {
-        $this->getLogger()->info(TextFormat::GREEN . "HealthStatus v1.0 By CrazedMiner Disabled!");
+        $this->getLogger()->info(TextFormat::GREEN . "HealthStatus Beta By CrazedMiner Disabled!");
     }
     
     public function registerEvents() {
