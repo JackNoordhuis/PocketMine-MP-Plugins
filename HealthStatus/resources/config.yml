@@ -1,0 +1,20 @@
+---
+#
+#HealthStatus Beta Config File
+#
+#Use true to Enable or put anything else to Disable
+#
+#Symbol used for player health
+Symbol: "I"
+#
+#The color used for displaying the health a player has
+Health-Color: "&l&5"
+#
+#The color used for displaying the health a player has lost
+Used-Health-Color: "&l&7"
+#
+#Health display Settings
+Nametag:
+    Enabled: true
+    Format: "&7[&r@health&r]"
+...
