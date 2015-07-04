@@ -81,11 +81,11 @@ class Main extends PluginBase implements Listener{
                 $imessage = str_replace("@coins", $this->config->get("Money"), $this->config->get("Message"));
                 $message = str_replace("@player", $player->getName(), $imessage);
                 if($this->config->get("Economy-Plugin") == "Economy") {
-                    $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($killer->getName(), $this->config->get("money"));
+                    $this->getServer()->getPluginManager()->getPlugin("EconomyAPI")->addMoney($killer->getName(), $this->config->get("Money"));
                     $killer->sendMessage($message);
                 }
                 elseif($this->config->get("Economy-Plugin") == "PocketMoney") {
-                    $this->getServer()->getPluginManager()->getPlugin("PocketMoney")->grantMoney($killer->getName(), $this->config->get("money"));
+                    $this->getServer()->getPluginManager()->getPlugin("PocketMoney")->grantMoney($killer->getName(), $this->config->get("Money"));
                     $killer->sendMessage($message);
                 }
             }
