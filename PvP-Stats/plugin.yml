@@ -1,18 +1,19 @@
 name: PvP-Stats
 author: CrazedMiner
-description: Counts player kills and deaths to form a kill to death ratio
 version: 1.0
-main: /CrazedMiner/Main
-website: CrazedMiner.weebly.com
+description: Counts players kills and deaths.
+main: CrazedMiner\Main
+api: [1.12.0]
 
 commands:
     stats:
-        description: Shows player kills, deaths and ratio
-        permission: pvp-stats.command.stats
+        description: "Checks a players stats."
+        
 permissions:
-    pvp-stats:
-        description: PvP-Stats main Permission
-        pvp-stats.command:
-            description: PvP-Stats main Commands Permission
-            pvp-stats.command.stats:
-                description: PvP-Stats /stat permission node
+    pvp-stats.command.other:
+        description: Players with this permission are able to check the stats of other Players.
+        default: op
+        
+    pvp-stats.command.self:
+        description: Players with this permission are able to clear their own Inventories.
+        default: true
