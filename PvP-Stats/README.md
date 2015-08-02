@@ -1,7 +1,7 @@
 PvP-Stats a PocketMine-MP 1.5 Plugin by CrazedMiner (Jack Noordhuis).
 
 Versions:
-- v1.0- Realase, counts and saves kills and deaths to the provider specified in the config.
+- v1.0- Realase, counts and saves kills and deaths to the provider specified in the config. Download: https://www.dropbox.com/s/otblx1100bml5kk/PvP-Stats_v1.phar?dl=0
 
 To-do:
 - Add more data prviders.
