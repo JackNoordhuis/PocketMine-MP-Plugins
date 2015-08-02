@@ -1,0 +1,16 @@
+---
+#
+#PvP-Stats v1.0 Settings.yml Configuration File
+#
+#Data Provider (Currently the only options are YAML and MYSQL).
+data-provider: yaml
+#
+#MYSQL Server Settings
+mysql-settings:
+    host: "127.0.0.1"
+    port: 3306
+    user: "user"
+    password: "password"
+    database: "databaseName"
+#
+...
