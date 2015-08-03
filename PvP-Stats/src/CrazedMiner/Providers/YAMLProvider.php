@@ -30,21 +30,21 @@ class YAMLProvider implements ProviderInterface {
     public function __construct(Main $plugin) {
         $this->plugin = $plugin;
         @mkdir($this->plugin->getDataFolder() . "players/");
-        $this->plugin->getLogger()->info("Data Provider set to YAML!");
+        $this->plugin->getLogger()->info($this->plugin->translateColors("&r&aData Provider set to &r&6YAML&r&a!"));
     }
     
     public function getPlayer(IPlayer $player) {
         $name = strtolower($player->getName());
         if($this->playerExists($player)) {
-            return (new Config($this->getDataFolder() . "players/" . $name . ".yml", Config::YAML))->getAll();
+            return (new Config($this->plugin->getDataFolder() . "players/" . $name . ".yml", Config::YAML))->getAll();
         }
         return null;
     }
     
     public function getData($player) {
         $name = strtolower($player);
-        if(file_exists($this->plugin->getDataFolder() . "players/" . $name . "yml")) {
-            return (new Config($this->getDataFolder() . "players/" . $name . ".yml", Config::YAML))->getAll();
+        if(file_exists($this->plugin->getDataFolder() . "players/" . $name . ".yml")) {
+            return (new Config($this->plugin->getDataFolder() . "players/" . $name . ".yml", Config::YAML))->getAll();
         }
         return null;
     }
@@ -76,7 +76,7 @@ class YAMLProvider implements ProviderInterface {
         $name = strtolower($player->getName());
         if($this->playerExists($player)) {
             @mkdir($this->plugin->getDataFolder() . "players/" . $name . ".yml");
-            $data = new Config($this->plugin->getDataFolder() . "players/" . $name . ".yml", Config::YAML);
+            $data = new Config($this->plugin->getDataFolder() . "players/" . $name . ".yml");
             $data->set($type, $data->getAll()[$type] + 1);
             return $data->save();
         }else {
