@@ -24,6 +24,7 @@ use pocketmine\command\CommandExecutor;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
+use pocketmine\utils\Config;
 
 use CrazedMiner\Main;
 
@@ -39,7 +40,11 @@ class StatsCommand extends PluginBase implements CommandExecutor{
                 $name = $args[0];
                 if($sender->hasPermission("pvp-stats.command.other")) {
                     if($this->plugin->getData($name) !== null) {
-                        $sender->sendMessage($name . "('s) Stats:\n- Kills: " . $this->plugin->getData($name)["kills"] . "\n- Deaths: " . $this->plugin->getData($name)["deaths"] . "\n- K/D Ratio: " . round(($this->plugin->getData($name)["kills"] / $this->plugin->getData($name)["deaths"]), 3));
+                        if($this->plugin->getData($name)["kills"] !== 0 or $this->plugin->getData($name)["deaths"] !== 0) {
+                            $sender->sendMessage($this->plugin->translateColors(str_replace(array("@player", "@kills", "@deaths", "@kdratio"), array($name, $this->plugin->getData($name)["kills"], $this->plugin->getData($name)["deaths"], (round((($this->plugin->getData($name)["kills"]) / ($this->plugin->getData($name)["deaths"])), 3))), (new Config($this->plugin->getDataFolder() . "Settings.yml"))->getAll()["other-command-format"])));
+                        }else {
+                            $sender->sendMessage(TextFormat::RED . "Sorry, " . $name . " dosen't have enough kills or death to calculate stats.");
+                        }
                     }
                     else {
                     $sender->sendMessage(TextFormat::RED . "Sorry, stats for " . $name . " don't exist.");
@@ -52,7 +57,9 @@ class StatsCommand extends PluginBase implements CommandExecutor{
             else {
                 if($sender instanceof Player) {
                     if($sender->hasPermission("pvp-stats.command.self")) {
-                        $sender->sendMessage("Your Stats:\n- Kills: " . $this->plugin->getPlayer($sender)["kills"] . "\n- Deaths: " . $this->plugin->getPlayer($sender)["deaths"]  . "\n- K/D Ratio: " . round(($this->plugin->getPlayer($sender)["kills"] / $this->plugin->getPlayer($sender)["deaths"]), 3));
+                        if($this->plugin->getPlayer($sender)["kills"] !== 0 or $this->plugin->getPlayer($sender)["deaths"] !== 0) {
+                            $sender->sendMessage($this->plugin->translateColors(str_replace(array("@kills", "@deaths", "@kdratio"), array($this->plugin->getPlayer($sender)["kills"], $this->plugin->getPlayer($sender)["deaths"], (round(($this->plugin->getPlayer($sender)["kills"] / $this->plugin->getPlayer($sender)["deaths"]), 3))), (new Config($this->plugin->getDataFolder() . "Settings.yml"))->getAll()["self-command-format"])));
+                        }
                     }
                     else {
                         $sender->sendMessage(TextFormat::RED . "You don't have permissions to use this command.");
