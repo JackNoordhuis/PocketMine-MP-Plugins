@@ -1,6 +1,6 @@
 ---
 #
-#PvP-Stats v1.0 Settings.yml Configuration File
+#PvP-Stats v1.1 Settings.yml Configuration File
 #
 #Data Provider (Currently the only options are YAML and MYSQL).
 data-provider: yaml
@@ -13,4 +13,10 @@ mysql-settings:
     password: "password"
     database: "databaseName"
 #
+#Color Symbol
+color-symbol: "&"
+#
+#/stats Command format
+other-command-format: "&r&l&b@player&r&6('s) Stats:\n&r&o&e- &r&aKills: &r&l&6@kills\n&r&o&e- &r&aDeaths: &r&l&6@deaths\n&r&o&e- &r&aK-D Ratio: &r&l&6@kdratio"
+self-command-format: "&r&6Your Stats:\n&r&o&e- &r&aKills: &r&l&6@kills\n&r&o&e- &r&aDeaths: &r&l&6@deaths\n&r&o&e- &r&aK-D Ratio: &r&l&6@kdratio"
 ...
