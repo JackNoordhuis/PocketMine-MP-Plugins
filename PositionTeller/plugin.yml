@@ -1,0 +1,15 @@
+name: PositionTeller
+author: Jack Noordhuis
+version: 1.0.0
+description: Sends a constant popup with a players position when activated.
+main: PositionTeller\Main
+api: [1.12.0]
+
+commands:
+    togglepos:
+        description: "Toggles your PositionTeller"
+        
+permissions:
+    positionteller.command:
+        description: Players with this permission are able to toggle PositionTeller
+        default: op
