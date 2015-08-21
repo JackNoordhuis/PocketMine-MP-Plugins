@@ -38,11 +38,11 @@ class Main extends PluginBase {
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         $this->saveResource("Settings.yml");
         $this->setProvider();
-        $this->getLogger()->info(TextFormat::GREEN . "PvP-Stats v1.2 by CrazedMiner is now Enabled!");
+        $this->getLogger()->info(TextFormat::GREEN . "PvP-Stats v1.3 by CrazedMiner is now Enabled!");
     }
     
     public function onDisable() {
-        $this->getLogger()->info(TextFormat::RED . "PvP Stats v1.2 by CrazedMiner is now Disabled!");
+        $this->getLogger()->info(TextFormat::RED . "PvP Stats v1.3 by CrazedMiner is now Disabled!");
     }
     
     public function setProvider() {
