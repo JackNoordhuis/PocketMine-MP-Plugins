@@ -30,7 +30,7 @@ class Main extends PluginBase {
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         $this->getCommand("togglepos")->setExecutor(new TogglePosCommand($this));
         $this->initTask();
-        $this->getLogger()->info(TF::AQUA . "PositionTeller" . TF::GREEN . " by " . TF::YELLOW . "Jack Noordhuis" . TF::GREEN . ", Loaded successfully!");
+        $this->getLogger()->info(TF::AQUA . "PositionTeller v1.0" . TF::GREEN . " by " . TF::YELLOW . "Jack Noordhuis" . TF::GREEN . ", Loaded successfully!");
     }
 
     public function onDisable() {
