@@ -16,13 +16,13 @@
  * GNU General Public License for more details.
 */
 
-namespace positionteller;
+namespace PositionTeller;
 
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 
-use positionteller\Main;
+use PositionTeller\Main;
 
 class EventListener implements Listener {
     
@@ -38,8 +38,8 @@ class EventListener implements Listener {
     
     public function onDeath(PlayerDeathEvent $event) {
         $player = $event->getEntity();
-        if(Main::isActive($player)) {
-            Main::removeActive($player);
+        if($this->getPlugin()->isActive($player)) {
+            $this->getPlugin()->removeActive($player);
         }
     }
     

@@ -1,6 +1,6 @@
 name: PositionTeller
 author: Jack Noordhuis
-version: 1.1
+version: 1.0
 description: Sends a constant popup with a players position when activated.
 main: PositionTeller\Main
 api: [1.12.0]
@@ -11,8 +11,5 @@ commands:
         
 permissions:
     positionteller.command:
-        description: "Main PositionTeller permission node"
-        default: op
-    positionteller.command.togglepos.self:
-        description: "TogglePos command permission node"
+        description: Players with this permission are able to toggle PositionTeller
         default: op

@@ -16,27 +16,29 @@
  * GNU General Public License for more details.
 */
 
-namespace PositionTeller;
+namespace positionteller\tasks;
 
 use pocketmine\scheduler\PluginTask;
 use pocketmine\utils\TextFormat as TF;
 
-use PositionTeller\Main;
+use positionteller\Main;
 
-class Task extends PluginTask {
-	
+class ShowPos extends PluginTask {
+    
+    private $plugin;
+
     public function __construct(Main $plugin){
-    	parent::__construct($plugin);
+        parent::__construct($plugin);
         $this->plugin = $plugin;
-        $this->current = 0;
+    }
+    
+    public function getPlugin() {
+        return $this->plugin;
     }
     
     public function onRun($tick){
-    	$this->plugin = $this->getOwner();
-        foreach($this->plugin->getServer()->getOnlinePlayers() as $players) {
-            if($this->plugin->isActive($players)) {
-                $players->sendPopup(TF::GOLD . "X: " . TF::AQUA . round($players->getX(), 2) . TF::GOLD . " Y: " . TF::AQUA . round($players->getY(), 2) . TF::GOLD . " Z: " . TF::AQUA . round($players->getZ(), 2));
-            }
+        foreach($this->getPlugin()->active as $player) {
+            $player->sendPopup(str_replace(array("@x", "@y", "@z"), array(round($player->getX(), 1), round($player->getY(), 2), round($player->getY(), 1)), Main::translateColors($this->getPlugin()->getConfigValue("messages.showpos.format"))));
         }
     }
     

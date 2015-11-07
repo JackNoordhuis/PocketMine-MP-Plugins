@@ -27,26 +27,32 @@ use pocketmine\utils\TextFormat as TF;
 use PositionTeller\Main;
 
 class TogglePosCommand implements CommandExecutor {
+    
+    private $plugin;
 
     public function __construct(Main $plugin) {
         $this->plugin = $plugin;
+    }
+    
+    public function getPlugin() {
+        return $this->plugin;
     }
     
     public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
         if(strtolower($cmd) === "togglepos") {
             if($sender instanceof Player) {
                 if($sender->hasPermission("positionteller.command")) {
-                    if($this->plugin->isActive($sender)) {
-                        $this->removeActive($sender);
+                    if($this->getPlugin()->isActive($sender)) {
+                        $this->getPlugin()->removeActive($sender);
                         $sender->sendMessage(TF::GOLD . "You have turned off PositionTeller!");
-                    }else {
-                        $this->plugin->addActive($sender);
+                    } else {
+                        $this->getPlugin()->addActive($sender);
                         $sender->sendMessage(TF::GREEN . "You have activated PositionTeller!");
                     }
-                }else {
+                } else {
                     $sender->sendMessage(TF::RED . "You do not have permission to use this command!");
                 }
-            }else {
+            } else {
                     $sender->sendMessage(TF::RED . "Please use this command in-game!");
                 }
         }
