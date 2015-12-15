@@ -1,0 +1,23 @@
+name: Fly
+author: Jack Noordhuis
+version: 0.0.1
+description: Allows players to fly
+main: fly\Main
+api: 1.13.0
+
+commands:
+    fly:
+        description: "toggles flying"
+
+permissions:
+    fly:
+        description: "Main fly permission node"
+        default: op
+    
+        fly.command:
+            description: "Main fly command permission node"
+            default: op
+        
+            fly.command.fly:
+                description: "Fly command permission node"
+                default: op
