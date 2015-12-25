@@ -4,25 +4,25 @@ This repo contains pretty much all of my public plugins for PocketMine.
 All plugins and code included in the repository are protected by the General Public license 3.0 (http://www.gnu.org/licenses/gpl-3.0.en.html)
 
 ### Working plugins
-    -**Fly**
+- **Fly**
         - Allows players to fly by running the fly command if they have permission
-    -**HealthStatus**
+- **HealthStatus**
         - Displays a players health as part of their names
-    -**InventoryClear**
+- **InventoryClear**
         - Allows players to clear their own or another players inventory by running the clearinv command
-    -**PositionTeller**
+- **PositionTeller**
         - Displays a players location in a constant tip when they run the togglepos command
-    -**PvP-Stats**
+- **PvP-Stats**
         - Saves players kills and deaths to either local yaml files or saves them in a MySQL database and displays them when the stats command is run
-    -**Sneak**
+- **Sneak**
         - Allows players to toggle sneaking by running the /sneak command
-    -**WorldProtector**
+- **WorldProtector**
         - Controls block breaking, placing, interaction and player damage through the use of permission nodes
 
 ### Not working or unfinished plugins
-    -**ChatLog**
+- **ChatLog**
         - Currently unfinished
-    -**Dummy-Kits**
+- **Dummy-Kits**
         - Needs to be updated for 0.13 and is currently unfinished
-    -**KillMoneyFix**
+- **KillMoneyFix**
         - Needs to be updated
