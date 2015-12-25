@@ -19,7 +19,7 @@ namespace worldprotector;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as TF;
 
-class Main extends PluginBase implements Listener {
+class Main extends PluginBase {
   
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
