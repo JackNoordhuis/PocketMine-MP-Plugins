@@ -5,24 +5,24 @@ All plugins and code included in the repository are protected by the General Pub
 
 ### Working plugins
 - **Fly**
-        - Allows players to fly by running the fly command if they have permission
+    - Allows players to fly by running the fly command if they have permission
 - **HealthStatus**
-        - Displays a players health as part of their names
+    - Displays a players health as part of their names
 - **InventoryClear**
-        - Allows players to clear their own or another players inventory by running the clearinv command
+    - Allows players to clear their own or another players inventory by running the clearinv command
 - **PositionTeller**
-        - Displays a players location in a constant tip when they run the togglepos command
+    - Displays a players location in a constant tip when they run the togglepos command
 - **PvP-Stats**
-        - Saves players kills and deaths to either local yaml files or saves them in a MySQL database and displays them when the stats command is run
+    - Saves players kills and deaths to either local yaml files or saves them in a MySQL database and displays them when the stats command is run
 - **Sneak**
-        - Allows players to toggle sneaking by running the /sneak command
+    - Allows players to toggle sneaking by running the /sneak command
 - **WorldProtector**
-        - Controls block breaking, placing, interaction and player damage through the use of permission nodes
+    - Controls block breaking, placing, interaction and player damage through the use of permission nodes
 
 ### Not working or unfinished plugins
 - **ChatLog**
-        - Currently unfinished
+    - Currently unfinished
 - **Dummy-Kits**
-        - Needs to be updated for 0.13 and is currently unfinished
+    - Needs to be updated for 0.13 and is currently unfinished
 - **KillMoneyFix**
-        - Needs to be updated
+    - Needs to be updated
