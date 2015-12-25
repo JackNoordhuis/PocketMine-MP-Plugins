@@ -1,18 +1,28 @@
-PocketMine-MP-Plugins
-Repository full of goodies (all my awesome PocketMine-MP Plugins)
+# PocketMine-MP plugins
+This repo contains pretty much all of my public plugins for PocketMine.
 
-You may edit and redistribute any plugins and/or code in this repository as long as you state in your work that the original code was by me and have a link to this repository.
+All plugins and code included in the repository are protected by the General Public license 3.0 (http://www.gnu.org/licenses/gpl-3.0.en.html)
 
-Working and/or finished plugins:
-- WorldProtector v1.0: Protects your Server from players breaking blocks, placing blocks and taking damage.
-- InventoryClear v1.1: Clear players inventory on Join, Leave, Death and with a command.
-- KillMoneyFix v1.0: Players get the set amount of money for killing a player.
-- Sneak v1.1: Allows players to Sneak without Mods!
-- PvP-Stats v1.1: Counts players killas and deaths to form a K/D ratio.
+### Working plugins
+    - **Fly**
+        - Allows players to fly by running the fly command if they have permission
+    - **HealthStatus**
+        - Displays a players health as part of their names
+    - **InventoryClear**
+        - Allows players to clear their own or another players inventory by running the clearinv command
+    - **PositionTeller**
+        - Displays a players location in a constant tip when they run the togglepos command
+    - **PvP-Stats**
+        - Saves players kills and deaths to either local yaml files or saves them in a MySQL database and displays them when the stats command is run
+    - **Sneak**
+        - Allows players to toggle sneaking by running the /sneak command
+    - **WorldProtector**
+        - Controls block breaking, placing, interaction and player damage through the use of permission nodes
 
-Unfinished/not-working plugins:
-- Chat-Log- Saves all Commands and Chat sent to your server with the players name, IP, date and time.
-- DummyKits- Fake players are added to the game and when tapped will give you a kit.
-- MoreCommands- Adds more usefull commands to your server.
-- Item-Block- Blocks items you specify in the Config from being used.
-- CommandRunner- Runs commands you specify in the config to be run on certain events.
+### Not working or unfinished plugins
+    - **ChatLog**
+        - Currently unfinished
+    - **Dummy-Kits**
+        - Needs to be updated for 0.13 and is currently unfinished
+    - **KillMoneyFix**
+        - Needs to be updated
