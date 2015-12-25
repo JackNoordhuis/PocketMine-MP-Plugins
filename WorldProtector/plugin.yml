@@ -1,25 +1,36 @@
 name: WorldProtector
-author: CrazedMiner
-version: 1.0
-description: Protects your worlds
-main: CrazedMiner\Main
-api: 1.4.1
+author: Jack Noordhuis
+version: 1.1.0
+description: Protects worlds from certain events through permissions
+main: worldprotect\Main
+api: 1.13.0
 
 permissions:
     worldprotector:
-        description: Main permission node for all
+        description: WorldProtector's main permission
         default: op
-        
+
         worldprotector.block:
-            description: Main permission node for block things
+            description: WorldProtector's main permission for blocky things
             default: op
-            
+
             worldprotector.block.break:
-                description: Permission node that disables block breaking
+                description: WorldProtector's permission for block breaking things
                 default: op
             worldprotector.block.place:
-                description: Permission node that disables block placing
+                description: WorldProtector's permission for block placing things
                 default: op
-            worldprotector.player.hurt:
-                description: Permission node that disables player damage
+            worldprotector.block.interact:
+                description: WorldProtector's permission for block interaction things
+                default: op
+
+        worldprotector.player:
+            description: WorldProtector's main permission for player things
+            default: op
+
+            worldprotector.player.attack:
+                description: WorldProtector's permission for player attack things
+                default: op
+            worldprotector.player.damage:
+                description: WorldProtector's permission for player damage things
                 default: op

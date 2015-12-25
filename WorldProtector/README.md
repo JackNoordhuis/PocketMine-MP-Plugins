@@ -1,19 +1,20 @@
-WorldProtector a PocketMine-MP 1.4.1 Plugin by CrazedMiner (Jack Noordhuis)
+# WorldProtector a PocketMine plugin developed by Jack Noordhuis
+WorldProtector is designed to let you control everything certain events on your server through the use of permission nodes.
+WorldProtector currently allows you to control block placing, breaking, interaction and players attacking or taking damage.
 
-Overview:
-- WorldProtector is a plugin design to protect your worlds against diffrent things such as block placing, block breaking, block   interact, player damage all through permission nodes.
 
-Permission Nodes:
-- WorldProtector.Block.Break: If the Player is op or has the Permission they will be able to Break blocks or interact.
-- WorldProtector.Block.Place: If the Player is op or has the Permission they will be able to Break place.
-- WorldProtector.Player.Hurt: If the Player is op or has the Permission they will be able to take damage.
+### Permission Nodes:
+- **worldprotector.block.break**
+    - Players with this permission are able to break anything blocks, anywhere.
+- **worldprotector.block.place**
+    - Players with this permission are able to place any block, anywhere.
+- **worldprotector.block.interact**
+    - Players with this permission are able to interact with any block, anywhere.
+- **worldprotector.player.attack**
+    - Players with this permission are able to attack any player, anywhere.
+- **worldprotector.player.damage**
+    - Players with this permission are able to take damage from anything, anywhere.
 
-Versions:
-- v1.0- Release, automatically disables block breaking, block placing, interacting with blocks and player damage.
-
-To-do:
-- Add config to choose what is protected in each world.
-- Add more things to disable/enable.
-
-Bugs:
-- No known bugs.
+## Disclaimer
+By using this plugin it is assumed you have read the main readme file included in this repo that gives you a general overview of the entire repo.
+It is assumed that by reading, using or editing this plugin that you have read and understood the GNU 3.0 (http://www.gnu.org/licenses/gpl-3.0.en.html)
