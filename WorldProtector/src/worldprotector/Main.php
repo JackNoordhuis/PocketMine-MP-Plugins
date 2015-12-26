@@ -1,4 +1,5 @@
 <?php
+
 /*
  * WorldProtector plugin for PocketMine-MP
  * Copyright (C) 2015 Jack Noordhuis
