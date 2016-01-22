@@ -25,6 +25,7 @@ use pocketmine\Player;
 
 use positionteller\commands\TogglePos;
 use positionteller\tasks\ShowPos;
+use positionteller\EventListener;
 
 class Main extends PluginBase {
     

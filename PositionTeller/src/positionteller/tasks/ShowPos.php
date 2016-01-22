@@ -38,7 +38,7 @@ class ShowPos extends PluginTask {
     
     public function onRun($tick){
         foreach($this->getPlugin()->active as $player) {
-            $player->sendPopup(str_replace(array("@x", "@y", "@z"), array(round($player->getX(), 1), round($player->getY(), 2), round($player->getY(), 1)), Main::translateColors($this->getPlugin()->getConfigValue("messages.showpos.format"))));
+            $player->sendPopup(str_replace(array("@x", "@y", "@z"), array(round($player->getX(), 1), round($player->getY(), 2), round($player->getZ(), 1)), Main::translateColors($this->getPlugin()->getConfigValue("messages.showpos.format"))));
         }
     }
     
