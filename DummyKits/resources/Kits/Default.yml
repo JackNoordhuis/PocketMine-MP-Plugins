@@ -1,6 +1,12 @@
 ---
 # DummyKits v0.0.1_Beta - Deafult.yml
 name: default
+# clear inventory on kit give
+clear-inventory: false
+# clear effects on kit give
+clear-effects: false
+# Helmet, Chestplate, Leggings, Boots
+armor: "0, 0, 0, 0"
 items:
     # id, meta, amount
     - 0, 0, 0
