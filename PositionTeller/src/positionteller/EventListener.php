@@ -38,8 +38,8 @@ class EventListener implements Listener {
     
     public function onDeath(PlayerDeathEvent $event) {
         $player = $event->getEntity();
-        if(Main::isActive($player)) {
-            Main::removeActive($player);
+        if($this->plugin->isActive($player)) {
+            $this->plugin->removeActive($player);
         }
     }
     

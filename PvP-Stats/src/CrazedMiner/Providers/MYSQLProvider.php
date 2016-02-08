@@ -34,7 +34,7 @@ class MYSQLProvider implements ProviderInterface {
         $settings = (new Config($this->plugin->getDataFolder() . "Settings.yml"))->getAll()["mysql-settings"];
         
         if(!isset($settings["host"]) or !isset($settings["user"]) or !isset($settings["password"]) or !isset($settings["database"]) or !isset($settings["port"])) {
-            $this->plugin->getLogger()->critical("Invalid MYSQL Settings!");
+            $this->plugin->getLogger()->critical("Invalid MySQL Settings!");
             return;
         }
         
@@ -47,7 +47,7 @@ class MYSQLProvider implements ProviderInterface {
         $resource = $this->plugin->getResource("mysql.sql");
         $this->database->query(stream_get_contents($resource));
         fclose($resource);
-        $this->plugin->getLogger()->info("Data Provider set to MYSQL!");
+        $this->plugin->getLogger()->info("Data Provider set to MySQL!");
     }
     
     public function getPlayer(IPlayer $player) {
