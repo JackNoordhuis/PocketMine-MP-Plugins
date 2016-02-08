@@ -1,0 +1,28 @@
+---
+# DummyKits v0.0.1_Beta - Dummys/Deafult.yml
+# display name (& will be treated as a color code)
+name: "&6Default"
+# centered description (& will be treated as a color code)
+description: "&bI'm an NPC!"
+# position (x, y, z)
+pos: "0, 100, 0"
+# level
+level: world
+# yaw
+yaw: 180
+# pitch
+pitch: 0
+# item displayed in hand (id, meta, amount)
+hand-item: "0, 0, 0"
+# armor displayed (only works for players) (helmet, chestplate, leggings, boots)
+armor: "0, 0, 0, 0"
+# will npc look at players? (true or false)
+look: true
+# kits to give when tapped
+kits:
+    - default
+# commands to run when tapped ({player} being the players name)
+commands:
+    - tp 0 100 0
+    - tell {player} hello!
+...

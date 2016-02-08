@@ -1,18 +1,20 @@
 ---
-# DummyKits v0.0.1_Beta - Deafult.yml
+# DummyKits v0.0.1_Beta - Kits/Deafult.yml
 name: default
-# clear inventory on kit give
+# clear inventory on kit give (true or false)
 clear-inventory: false
-# clear effects on kit give
+# clear effects on kit give (true or false)
 clear-effects: false
-# Helmet, Chestplate, Leggings, Boots
+# armor to apply (helmet, chestplate, leggings, boots)
 armor: "0, 0, 0, 0"
+# items to give
 items:
     # id, meta, amount
     - 0, 0, 0
     - 0, 0, 0
     - 0, 0, 0
     - 0, 0, 0
+# effects to apply
 effects:
     # name, amplifier, time, hide effects
     - health_boost, 1, 1000, false

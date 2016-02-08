@@ -1,7 +1,8 @@
 <?php
 
-namespace dummtkit\kit;
+namespace dummykits\kit;
 
+use pocketmine\utils\Config;
 use pocketmine\item\Item;
 use pocketmine\entity\Effect;
 use pocketmine\Player;
@@ -26,7 +27,7 @@ class KitManager {
                 if(!is_dir($this->path))
                         @mkdir($this->path);
 
-                foreach(scandir($this->plugin->getDataFolder() . "Kits") as $kit) {
+                foreach(scandir($this->path) as $kit) {
                         $parts = explode(".", $kit);
                         if($parts[1] !== "yml")
                                 continue;
