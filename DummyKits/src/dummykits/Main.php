@@ -2,9 +2,11 @@
 
 namespace dummykits;
 
-use pocketmine\PluginBase;
+use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase {
+        
+        public $kitManager = null;
         
         public function onEnable() {
                 
