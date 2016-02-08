@@ -1,6 +1,0 @@
-name: Dummy-Kits
-author: CrazedMiner
-description: Sends the player extra player packets that are usable kits (DummyKits)
-version: 1.0
-main: /CrazedMiner/Main
-website: CrazedMiner.weebly.com

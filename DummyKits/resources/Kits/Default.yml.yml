@@ -1,0 +1,13 @@
+---
+# DummyKits v0.0.1_Beta - Deafult.yml
+name: default
+items:
+    # id, meta, amount
+    - 0, 0, 0
+    - 0, 0, 0
+    - 0, 0, 0
+    - 0, 0, 0
+effects:
+    # name, amplifier, time, hide effects
+    - health_boost, 1, 1000, false
+...
