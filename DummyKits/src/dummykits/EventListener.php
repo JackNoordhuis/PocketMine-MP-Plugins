@@ -20,11 +20,12 @@ class EventListener implements Listener {
         }
         
         public function onPacketRecive(DataPacketReceiveEvent $event) {
-                if(($packet = $event->getPacket()) instanceof InteractPacket) {
+                if($event->getPacket() instanceof InteractPacket) {
                         $player = $event->getPlayer();
-                        if(($target = $player->getLevel()->getEntity($packet->target)) instanceof Dummy) {
+                        if(($target = $player->getLevel()->getEntity($event->getPacket()->target)) instanceof Dummy) {
+                                $event->setCancelled(true);
                                 foreach($target->kits as $kitName) {
-                                        if(($kit = $this->plugin->kitManager->getKit($kitName)) instanceof Kit) {
+                                        if(($kit = $this->plugin->kitManager->getKit(Main::removeColors($kitName))) instanceof Kit) {
                                                 $this->plugin->kitManager->applyKit($player, $kit);
                                         } else {
                                                 $this->plugin->getLogger()->error(Main::translateColors("&cCouldn't find a kit named " . $kitName ."!"));

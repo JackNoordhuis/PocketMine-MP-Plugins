@@ -35,21 +35,27 @@ class DummyManager {
         }
         
         public function checkDummys() {
-                if(!is_dir($this->path)) @mkdir($this->path);
+                if(!is_dir($this->path))  {
+                        @mkdir($this->path);
+                        $this->plugin->saveResource("Dummys" . DIRECTORY_SEPARATOR . "Default.yml");
+                }
                 if(!is_dir($this->path . "data" . DIRECTORY_SEPARATOR)) @mkdir($this->path . "data" . DIRECTORY_SEPARATOR);
+                
                 foreach(scandir($this->path) as $dummy) {
                         $parts = explode(".", $dummy);
-                        if($parts[1] !== "yml")
-                                continue;
-                        $data = (new Config($this->path . $dummy, Config::YAML))->getAll();
-                        if(!$this->isSpawned($data["name"])) {
-                                $this->spawn($data["name"], $data["description"], $data["level"], self::parsePos($data["level"]), $data["yaw"], $data["pitch"], self::parseItem($data["hand-item"]), self::parseArmor($data["armor"]), (bool) $data["look"], (bool) $data["knockback"], $data["kits"], $data["commands"]);
+                        if(isset($parts[1]) and $parts[1] === "yml") {
+                                $data = (new Config($this->path . $dummy, Config::YAML))->getAll();
+                                if(!$this->isSpawned($data["name"])) {
+                                        $this->spawn($data["name"], $data["description"], $data["level"], self::parsePos($data["pos"]), $data["yaw"], $data["pitch"], self::parseItem($data["hand-item"]), self::parseArmor($data["armor"]), (bool) $data["look"], (bool) $data["knockback"], $data["kits"], $data["commands"]);
+                                } else {
+                                        continue;
+                                }
                         } else {
                                 continue;
                         }
                 }
         }
-        
+
         public function spawn($name, $description, $level, Vector3 $pos, $yaw, $pitch, Item $handItem, array $armor, $look, $knockback, array $kits, array $commands) {
                 $nbt = new Compound("", [
                     "Pos" => new Enum("Pos", [
@@ -91,6 +97,16 @@ class DummyManager {
                                 $inv->setChestplate($armor[1]);
                                 $inv->setLeggings($armor[2]);
                                 $inv->setBoots($armor[3]);
+                                $dummy->setCustomName(Main::translateColors($name));
+                                $dummy->setCustomDescription(Main::translateColors($description));
+                                foreach($commands as $cmd) {
+                                        $dummy->addCommand($cmd);
+                                }
+                                foreach($kits as $kit) {
+                                        $dummy->addKit($kit);
+                                }
+                                $dummy->setMove($look);
+                                $dummy->setKnockback($knockback);
                                 $dummy->spawnToAll();
                                 $this->writeSpawned($name);
                         } else {

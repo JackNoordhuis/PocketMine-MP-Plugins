@@ -21,18 +21,23 @@ class KitManager {
         public function __construct(Main $plugin) {
                 $this->plugin = $plugin;
                 $this->path = $plugin->getDataFolder() . DIRECTORY_SEPARATOR . "Kits" . DIRECTORY_SEPARATOR;
+                $this->loadKits();
         }
 
         public function loadKits() {
-                if(!is_dir($this->path))
+                if(!is_dir($this->path)) {
                         @mkdir($this->path);
+                        $this->plugin->saveResource("Kits" . DIRECTORY_SEPARATOR . "Default.yml");
+                }
 
                 foreach(scandir($this->path) as $kit) {
                         $parts = explode(".", $kit);
-                        if($parts[1] !== "yml")
+                        if(isset($parts[1]) and $parts[1] === "yml") {
+                                $data = (new Config($this->path . $kit, Config::YAML))->getAll();
+                                $this->registerKit((string) $data["name"], self::parseArmor($data["armor"]), self::parseItems($data["items"]), self::parseEffects($data["effects"]), (bool) $data["clear-inv"], (bool) $data["clear-effects"]);
+                        } else {
                                 continue;
-                        $data = (new Config($this->path . $kit, Config::YAML))->getAll();
-                        $this->registerKit((string) $data["name"], self::parseArmor($data["armor"]), self::parseItems($data["items"]), self::parseEffects($data["effects"]), (bool) $data["clear-inv"], (bool) $data["clear-effects"]);
+                        }
                 }
         }
 

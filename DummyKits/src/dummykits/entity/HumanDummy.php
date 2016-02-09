@@ -63,7 +63,7 @@ class HumanDummy extends Human implements Dummy {
 
                         $pk = new AddPlayerPacket();
                         $pk->uuid = $this->getUniqueId();
-                        $pk->username = Main::centerString($this->customName, $this->customDescription) . "\n" . Main::centerString($this->customDescription, $this->customName);
+                        $pk->username = $this->getNameTag();
                         $pk->eid = $this->getId();
                         $pk->x = $this->x;
                         $pk->y = $this->y;
@@ -110,6 +110,7 @@ class HumanDummy extends Human implements Dummy {
                 if(isset($this->namedtag->kncokback) and $this->namedtag->knockback instanceof Byte) {
                         $this->knockback = ($this->namedtag["knockback"] === 1 ? true : false);
                 }
+                $this->setNameTag(Main::centerString($this->customName, $this->customDescription) . "\n" . Main::centerString($this->customDescription, $this->customName));
         }
         
         public function look(Player $player) {

@@ -2,7 +2,7 @@
 # DummyKits v0.0.1_Beta - Kits/Deafult.yml
 name: default
 # clear inventory on kit give (true or false)
-clear-inventory: false
+clear-inv: false
 # clear effects on kit give (true or false)
 clear-effects: false
 # armor to apply (helmet, chestplate, leggings, boots)

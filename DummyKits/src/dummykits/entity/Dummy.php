@@ -3,7 +3,7 @@
 namespace dummykits\entity;
 
 interface Dummy {
-        
+
         public function setCustomName($name);
         
         public function setCustomDescription($string);

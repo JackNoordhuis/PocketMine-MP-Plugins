@@ -6,6 +6,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\entity\Entity;
 use pocketmine\utils\TextFormat as TF;
 
+use dummykits\EventListener;
 use dummykits\entity\HumanDummy;
 use dummykits\kit\KitManager;
 use dummykits\dummy\DummyManager;
