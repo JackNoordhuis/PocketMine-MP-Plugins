@@ -4,14 +4,16 @@ namespace dummykits\entity;
 
 interface Dummy {
         
-        public function setCustomName();
+        public function setCustomName($name);
         
-        public function setCustomDescription();
+        public function setCustomDescription($string);
         
-        public function addCommand();
+        public function addCommand($string);
         
-        public function addKit();
+        public function addKit($string);
         
-        public function setMove();
+        public function setMove($value = true);
+        
+        public function setKnockback($value = true);
         
 }
