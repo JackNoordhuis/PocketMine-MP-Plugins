@@ -20,6 +20,7 @@ class Main extends PluginBase {
                 $this->registerEntities();
                 $this->setKitManager();
                 $this->setDummyManager();
+                $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         }
         
         public function registerEntities() {
