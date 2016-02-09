@@ -59,7 +59,7 @@ class HumanDummy extends Human implements Dummy {
                 if($player !== $this and ! isset($this->hasSpawned[$player->getLoaderId()])) {
                         $this->hasSpawned[$player->getLoaderId()] = $player;
 
-                        $this->server->updatePlayerListData($this->getUniqueId(), $this->getId(), "", $this->skinName, $this->skin, [$player]);
+                        $this->server->updatePlayerListData($this->getUniqueId(), $this->getId(), "", $player->getSkinName(), $player->getSkinData(), [$player]);
 
                         $pk = new AddPlayerPacket();
                         $pk->uuid = $this->getUniqueId();
