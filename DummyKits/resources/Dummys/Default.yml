@@ -18,6 +18,8 @@ hand-item: "0, 0, 0"
 armor: "0, 0, 0, 0"
 # will npc look at players? (true or false)
 look: true
+# will npc knockback players that are too close? (true or false)
+knockback: true
 # kits to give when tapped
 kits:
     - default

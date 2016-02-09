@@ -43,14 +43,14 @@ class DummyManager {
                                 continue;
                         $data = (new Config($this->path . $dummy, Config::YAML))->getAll();
                         if(!$this->isSpawned($data["name"])) {
-                                $this->spawn($data["name"], $data["description"], $data["level"], self::parsePos($data["level"]), $data["yaw"], $data["pitch"], self::parseItem($data["hand-item"]), self::parseArmor($data["armor"]), (bool) $data["look"], $data["kits"], $data["commands"]);
+                                $this->spawn($data["name"], $data["description"], $data["level"], self::parsePos($data["level"]), $data["yaw"], $data["pitch"], self::parseItem($data["hand-item"]), self::parseArmor($data["armor"]), (bool) $data["look"], (bool) $data["knockback"], $data["kits"], $data["commands"]);
                         } else {
                                 continue;
                         }
                 }
         }
         
-        public function spawn($name, $description, $level, Vector3 $pos, $yaw, $pitch, Item $handItem, array $armor, $look, array $kits, array $commands) {
+        public function spawn($name, $description, $level, Vector3 $pos, $yaw, $pitch, Item $handItem, array $armor, $look, $knockback, array $kits, array $commands) {
                 $nbt = new Compound("", [
                     "Pos" => new Enum("Pos", [
                         new Double("0", $pos->x),
@@ -75,7 +75,8 @@ class DummyManager {
                     "customDescription" => new String("customDescription", $description),
                     "kits" => new Enum("kits", $kits),
                     "commands" => new Enum("commands", $commands),
-                    "look" => new Byte("look", ($look ? 1 : 0))
+                    "look" => new Byte("look", ($look ? 1 : 0)),
+                    "knockback" => new Byte("knockback", ($knockback ? 1 : 0))
                     
                 ]);
                 $nbt->kits->setTagType(NBT::TAG_Compound);

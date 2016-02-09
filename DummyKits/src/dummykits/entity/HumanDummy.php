@@ -29,6 +29,8 @@ class HumanDummy extends Human implements Dummy {
         
         public $move = true;
         
+        public $knockback = true;
+        
         public function setCustomName($name) {
                 $this->customName = $name;
         }
@@ -47,6 +49,10 @@ class HumanDummy extends Human implements Dummy {
         
         public function setMove($value = true) {
                 $this->move = $value;
+        }
+        
+        public function setKnockback($value = true) {
+                $this->kockback = $value;
         }
         
         public function spawnTo(Player $player) {
@@ -84,6 +90,7 @@ class HumanDummy extends Human implements Dummy {
                 $this->namedtag->commands = new Enum("commands", $this->commands);
                 $this->namedtag->commands->setTagType(NBT::TAG_Compound);
                 $this->namedtag->look = new Byte("look", ($this->look ? 1 : 0));
+                $this->namedtag->knockback = new Byte("kockback", ($this->knockback ? 1 : 0));
         }
         
         protected function initEntity() {
@@ -99,6 +106,9 @@ class HumanDummy extends Human implements Dummy {
                 }
                 if(isset($this->namedtag->look) and $this->namedtag->look instanceof Byte) {
                         $this->look = ($this->namedtag["customDescription"] === 1 ? true : false);
+                }
+                if(isset($this->namedtag->kncokback) and $this->namedtag->knockback instanceof Byte) {
+                        $this->knockback = ($this->namedtag["knockback"] === 1 ? true : false);
                 }
         }
         

@@ -69,6 +69,7 @@ class KitManager {
                 foreach($kit->getEffects() as $effect) {
                         $player->addEffect($effect);
                 }
+                $player->sendMessage("You have recivied the " . $kit->getName() . " kit!");
         }
 
         public static function parseArmor($string) {
