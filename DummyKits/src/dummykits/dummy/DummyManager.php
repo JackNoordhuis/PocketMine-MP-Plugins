@@ -60,9 +60,9 @@ class DummyManager {
                 $nbt = new Compound;
                 
                 $nbt->Pos = new Enum("Pos", [
-                    new Double("0", $pos->x),
-                    new Double("1", $pos->y),
-                    new Double("2", $pos->z)
+                    new Double("", $pos->x),
+                    new Double("", $pos->y),
+                    new Double("", $pos->z)
                 ]);
                 
                 $nbt->Motion = new Enum("Motion", [
@@ -79,12 +79,12 @@ class DummyManager {
                 $nbt->Health = new Short("Health", 1);
                 
                 $nbt->DummyData = new Compound("DummyData", [
-                    "name" => new String("name", $name),
-                    "description" => new String("description", $description),
-                    "kits" => new Compound("kits", DummyManager::array2Compound($kits)),
-                    "commands" => new Compound("commands", DummyManager::array2Compound($commands)),
-                    "look" => new Byte("look", ($look ? 1 : 0)),
-                    "knockback" => new Byte("knockback", ($knockback ? 1 : 0))
+                    "Name" => new String("Name", $name),
+                    "Description" => new String("Description", $description),
+                    "Kits" => new Enum("Kits", DummyManager::array2Compound($kits)),
+                    "Commands" => new Enum("Commands", DummyManager::array2Compound($commands)),
+                    "Look" => new Byte("Look", ($look ? 1 : 0)),
+                    "Knockback" => new Byte("Knockback", ($knockback ? 1 : 0))
                 ]);
                 
                 if(($level = $this->plugin->getServer()->getLevelByName($level)) instanceof Level) {

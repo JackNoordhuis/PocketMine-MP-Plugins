@@ -40,7 +40,7 @@ class Main extends PluginBase {
         
         public static function centerString($string, $around) {
                 if(strlen($string) >= strlen($around)) {
-                        return $around;
+                        return $string;
                 }
 
                 $times = floor((strlen($around) - strlen($string)) / 2);

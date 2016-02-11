@@ -5,7 +5,7 @@ name: "&6Default"
 # centered description (& will be treated as a color code)
 description: "&bI'm an NPC!"
 # position (x, y, z)
-pos: "0, 100, 0"
+pos: "130, 72, 128"
 # level
 level: world
 # yaw
@@ -25,6 +25,6 @@ kits:
     - default
 # commands to run when tapped ({player} being the players name)
 commands:
-    - tp 0 100 0
-    - tell {player} hello!
+    - tp 128 70 128
+    - say Hello!
 ...
