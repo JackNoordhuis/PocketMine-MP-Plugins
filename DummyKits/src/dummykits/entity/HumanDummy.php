@@ -16,6 +16,7 @@ use pocketmine\nbt\tag\Compound;
 
 use dummykits\Main;
 use dummykits\entity\Dummy;
+use dummykits\dummy\DummyManager;
 
 class HumanDummy extends Human implements Dummy {
         
@@ -83,34 +84,47 @@ class HumanDummy extends Human implements Dummy {
         
         public function saveNBT() {
                 parent::saveNBT();
-                $this->namedtag->customName = new String("customName", $this->customName);
-                $this->namedtag->customDescription = new String("customDescription", $this->customDescription);
-                $this->namedtag->kits = new Enum("kits", $this->kits);
-                $this->namedtag->kits->setTagType(NBT::TAG_Compound);
-                $this->namedtag->commands = new Enum("commands", $this->commands);
-                $this->namedtag->commands->setTagType(NBT::TAG_Compound);
-                $this->namedtag->look = new Byte("look", ($this->look ? 1 : 0));
-                $this->namedtag->knockback = new Byte("kockback", ($this->knockback ? 1 : 0));
+                if(isset($this->namedtag->DummyData) and $this->namedtag->DummyData instanceof Compound) {
+                        $this->namedtag->DummyData["name"] = new String("name", $this->customName);
+                        $this->namedtag->DummyData["description"] = new String("description", $this->customDescription);
+                        $this->namedtag->DummyData["kits"] = new Compound("kits", DummyManager::array2Compound($this->kits));
+                        $this->namedtag->DummyData["commands"] = new Compound("commands", DummyManager::array2Compound($this->commands));
+                        $this->namedtag->DummyData["look"] = new Byte("look", ($this->move ? 1 : 0));
+                        $this->namedtag->DummyData["knockback"] = new Byte("knockback", ($this->knockback ? 1 : 0));
+                } else {
+                        $this->kill();
+                }
         }
         
         protected function initEntity() {
                 parent::initEntity();
-                if(isset($this->namedtag->customName) and $this->namedtag->customName instanceof String) {
-                        $this->customName = $this->namedtag["customName"];
+                if(isset($this->namedtag->DummyData) and $this->namedtag->DummyData instanceof Compound) {
+                        if(isset($this->namedtag->DummyData["name"]) and $this->namedtag->DummyData["name"] instanceof String) {
+                                $this->customName = $this->namedtag->DummyData["name"]->getValue();
+                        }
+                        if(isset($this->namedtag->DummyData["description"]) and $this->namedtag->DummyData["description"] instanceof String) {
+                                $this->customDescription = $this->namedtag->DummyData["description"]->getValue();
+                        }
+                        if(isset($this->namedtag->DummyData["kits"]) and $this->namedtag->DummyData["kits"] instanceof String) {
+                                foreach($this->namedtag->DummyData["kits"] as $kit) {
+                                        $$this->kits[] = $kit->getValue();
+                                }
+                        }
+                        if(isset($this->namedtag->DummyData["commands"]) and $this->namedtag->DummyData["commands"] instanceof String) {
+                                foreach($this->namedtag->DummyData["commands"] as $cmd) {
+                                        $$this->kits[] = $cmd->getValue();
+                                }
+                        }
+                        if(isset($this->namedtag->DummyData["look"]) and $this->namedtag->DummyData["look"] instanceof Byte) {
+                                $this->move = (bool) $this->namedtag->DummyData->getValue()["look"]->getValue();
+                        }
+                        if(isset($this->namedtag->DummyData["knockback"]) and $this->namedtag->DummyData["knockback"] instanceof Byte) {
+                                $this->knockback = (bool) $this->namedtag->DummyData["knockback"]->getValue();
+                        }
+                } else {
+                        $this->kill();
                 }
-                if(isset($this->namedtag->customDescription) and $this->namedtag->customDescription instanceof String) {
-                        $this->customDescription = $this->namedtag["customDescription"];
-                }
-                if(isset($this->namedtag->kits) and $this->namedtag->kits instanceof Compound) {
-                        $this->kits = $this->namedtag["kits"];
-                }
-                if(isset($this->namedtag->look) and $this->namedtag->look instanceof Byte) {
-                        $this->look = ($this->namedtag["customDescription"] === 1 ? true : false);
-                }
-                if(isset($this->namedtag->kncokback) and $this->namedtag->knockback instanceof Byte) {
-                        $this->knockback = ($this->namedtag["knockback"] === 1 ? true : false);
-                }
-                $this->setNameTag(Main::centerString($this->customName, $this->customDescription) . "\n" . Main::centerString($this->customDescription, $this->customName));
+                $this->setNameTag(Main::translateColors(Main::centerString($this->customName, $this->customDescription) . "\n" . Main::centerString($this->customDescription, $this->customName)));
         }
         
         public function look(Player $player) {

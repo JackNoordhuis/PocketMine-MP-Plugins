@@ -57,36 +57,35 @@ class DummyManager {
         }
 
         public function spawn($name, $description, $level, Vector3 $pos, $yaw, $pitch, Item $handItem, array $armor, $look, $knockback, array $kits, array $commands) {
-                $nbt = new Compound("", [
-                    "Pos" => new Enum("Pos", [
-                        new Double("0", $pos->x),
-                        new Double("1", $pos->y),
-                        new Double("2", $pos->z)
-                    ]),
-                    
-                    "Motion" => new Enum("Motion", [
-                        new Double("", 0),
-                        new Double("", 0),
-                        new Double("", 0)
-                    ]),
-                    
-                    "Rotation" => new Enum("Rotation", [
-                        new Float("", $yaw),
-                        new Float("", $pitch)
-                    ]),
-                    
-                    "Health" => new Short("Health", 20),
-                    
-                    "customName" => new String("customName", $name),
-                    "customDescription" => new String("customDescription", $description),
-                    "kits" => new Enum("kits", $kits),
-                    "commands" => new Enum("commands", $commands),
+                $nbt = new Compound;
+                
+                $nbt->Pos = new Enum("Pos", [
+                    new Double("0", $pos->x),
+                    new Double("1", $pos->y),
+                    new Double("2", $pos->z)
+                ]);
+                
+                $nbt->Motion = new Enum("Motion", [
+                    new Double("", 0),
+                    new Double("", 0),
+                    new Double("", 0)
+                ]);
+                
+                $nbt->Rotation = new Enum("Rotation", [
+                    new Float("", $yaw),
+                    new Float("", $pitch)
+                ]);
+                
+                $nbt->Health = new Short("Health", 1);
+                
+                $nbt->DummyData = new Compound("DummyData", [
+                    "name" => new String("name", $name),
+                    "description" => new String("description", $description),
+                    "kits" => new Compound("kits", DummyManager::array2Compound($kits)),
+                    "commands" => new Compound("commands", DummyManager::array2Compound($commands)),
                     "look" => new Byte("look", ($look ? 1 : 0)),
                     "knockback" => new Byte("knockback", ($knockback ? 1 : 0))
-                    
                 ]);
-                $nbt->kits->setTagType(NBT::TAG_Compound);
-                $nbt->commands->setTagType(NBT::TAG_Compound);
                 
                 if(($level = $this->plugin->getServer()->getLevelByName($level)) instanceof Level) {
                         $dummy = Entity::createEntity("HumanDummy", $level->getChunk($pos->x >> 4, $pos->z >> 4), $nbt);
@@ -97,16 +96,6 @@ class DummyManager {
                                 $inv->setChestplate($armor[1]);
                                 $inv->setLeggings($armor[2]);
                                 $inv->setBoots($armor[3]);
-                                $dummy->setCustomName(Main::translateColors($name));
-                                $dummy->setCustomDescription(Main::translateColors($description));
-                                foreach($commands as $cmd) {
-                                        $dummy->addCommand($cmd);
-                                }
-                                foreach($kits as $kit) {
-                                        $dummy->addKit($kit);
-                                }
-                                $dummy->setMove($look);
-                                $dummy->setKnockback($knockback);
                                 $dummy->spawnToAll();
                                 $this->writeSpawned($name);
                         } else {
@@ -125,6 +114,14 @@ class DummyManager {
         
         public function isSpawned($name) {
                 return is_file($this->path . "data" . DIRECTORY_SEPARATOR . Main::removeColors($name) . ".npc");
+        }
+        
+        public static function array2Compound(array $array) {
+                $temp = [];
+                foreach($array as $key => $data) {
+                        $temp[] = new String($key, $data);
+                }
+                return $temp;
         }
         
         public static function parsePos($string) {

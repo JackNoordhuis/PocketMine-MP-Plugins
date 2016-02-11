@@ -47,7 +47,8 @@ class EventListener implements Listener {
                                 $event->setCancelled(true);
                                 if($entity->knockback and $distance <= 1.4) {
                                         $player->knockBack($entity, 0, ($player->x - $entity->x), ($player->z - $entity->z), 0.4);
-                                } elseif($entity->look and $distance <= 10) {
+                                }
+                                if($entity->move and $distance <= 10) {
                                         $entity->look($player);
                                 }
                         } else {

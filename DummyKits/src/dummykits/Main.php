@@ -44,7 +44,7 @@ class Main extends PluginBase {
                 }
 
                 $times = floor((strlen($around) - strlen($string)) / 2);
-                return str_repeat(" ", ($times > 0 ? $times : 0)) . $string;
+                return str_repeat(" ", ($times < 1 ? $times : 0)) . $string;
         }
         
         public static function translateColors($string, $symbol = "&") {
