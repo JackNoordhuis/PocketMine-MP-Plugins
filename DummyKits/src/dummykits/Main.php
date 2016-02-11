@@ -39,12 +39,7 @@ class Main extends PluginBase {
         }
         
         public static function centerString($string, $around) {
-                if(strlen($string) >= strlen($around)) {
-                        return $string;
-                }
-
-                $times = floor((strlen($around) - strlen($string)) / 2);
-                return str_repeat(" ", ($times < 1 ? $times : 0)) . $string;
+                return str_pad($string, strlen($around), " ", STR_PAD_BOTH);
         }
         
         public static function translateColors($string, $symbol = "&") {
