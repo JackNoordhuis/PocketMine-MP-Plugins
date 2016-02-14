@@ -36,6 +36,7 @@ use pocketmine\command\CommandSender;
 
 use inventoryclear\command\ClearInv;
 use inventoryclear\command\ViewInv;
+use inventoryclear\session\ViewInv as ViewSession;
 
 class Main extends PluginBase {
 
@@ -87,15 +88,7 @@ class Main extends PluginBase {
         }
         
         public function viewInventory(Player $player, Player $target) {
-                $this->viewing[$player->getName()] = [
-                    "armor" => $player->getInventory()->getArmorContents(),
-                    "contents" => $player->getInventory()->getContents()
-                ];
-                $player->getInventory()->setArmorContents($target->getInventory()->getArmorContents());
-                $player->getInventory()->sendArmorContents($player);
-                $player->getInventory()->setContents($target->getInventory()->getContents());
-                $player->getInventory()->sendContents($player);
-                $player->addWindow($player->getInventory());
+                $this->viewing[$player->getName()] = new ViewSession($player, $target, true);
         }
 
 }

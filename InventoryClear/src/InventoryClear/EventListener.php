@@ -28,12 +28,9 @@ class EventListener implements Listener {
     
     public function onInventoryClose(InventoryCloseEvent $event) {
             $player = $event->getPlayer();
+            var_dump($event->isCancelled());
             if(isset($this->plugin->viewing[$player->getName()])) {
-                    $old = $this->plugin->viewing[$player->getName()];
-                    $player->getInventory()->setArmorContents($old["armor"]);
-                    $player->getInventory()->sendArmorContents($player);
-                    $player->getInventory()->setContents($old["contents"]);
-                    $player->getInventory()->sendContents($player);
+                    $this->plugin->viewing[$player->getName()]->end();
                     unset($this->plugin->viewing[$player->getName()]);
             }
             return;
