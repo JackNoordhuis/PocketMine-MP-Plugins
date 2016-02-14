@@ -11,7 +11,6 @@ use pocketmine\network\protocol\MovePlayerPacket;
 use pocketmine\nbt\tag\String;
 use pocketmine\nbt\tag\Byte;
 use pocketmine\nbt\tag\Enum;
-use pocketmine\nbt\NBT;
 use pocketmine\nbt\tag\Compound;
 
 use dummykits\Main;

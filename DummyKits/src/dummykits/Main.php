@@ -10,12 +10,15 @@ use dummykits\EventListener;
 use dummykits\entity\HumanDummy;
 use dummykits\kit\KitManager;
 use dummykits\dummy\DummyManager;
+use dummykits\skin\SkinManager;
 
 class Main extends PluginBase {
         
         public $kitManager = null;
         
         public $dummyManager = null;
+        
+        public $skinManager = null;
         
         public function onEnable() {
                 $this->registerEntities();
@@ -36,6 +39,11 @@ class Main extends PluginBase {
         public function setDummyManager() {
                 if(isset($this->dummyManager) and $this->dummyManager instanceof DummyManager) return;
                 $this->dummyManager = new DummyManager($this);
+        }
+        
+        public function setSkinManager() {
+                if(isset($this->skinManager) and $this->skinManager instanceof SkinManager) return;
+                $this->skinManager = new SkinManager($this);
         }
         
         public static function centerString($string, $around) {

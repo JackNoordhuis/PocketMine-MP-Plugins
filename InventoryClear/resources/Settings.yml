@@ -1,0 +1,20 @@
+---
+#
+# InventoryClear v2.0.0 Configuration file
+#
+# Command options
+commands:
+    clearinv:
+        self: true
+        other: false
+    viewinv: true
+#
+# Event options
+events:
+    # Clear inventory on join
+    join: true
+    # Clear inventory on death
+    death: false
+    # Clear inventory on quit
+    leave: true
+...
