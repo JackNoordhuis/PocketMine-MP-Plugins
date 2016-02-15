@@ -4,6 +4,7 @@ namespace inventoryclear\session;
 
 use pocketmine\Player;
 use pocketmine\inventory\PlayerInventory;
+use pocketmine\utils\TextFormat as TF;
 
 class ViewInv {
         
@@ -27,18 +28,19 @@ class ViewInv {
                 $this->owner->getInventory()->sendArmorContents($this->owner);
                 $this->owner->getInventory()->setContents($this->target->getInventory()->getContents());
                 $this->owner->getInventory()->sendContents($this->owner);
+                $this->owner->sendMessage(TF::GREEN . "You are now viewing " . TF::BOLD . TF::DARK_AQUA . $this->target->getName() . TF::RESET . TF::GREEN . "'s inventory, run " . TF::BOLD . TF::DARK_AQUA . "/viewinv" . TF::RESET . TF::GREEN . " to exit.");
+                
         }
         
         public function close() {
-                var_dump($this->lastKnownInv);
-                if($this->lastKnownInv != null) {
+                if(isset($this->lastKnownInv) and $this->lastKnownInv instanceof PlayerInventory) {
                         $this->owner->getInventory()->clearAll();
                         $this->owner->getInventory()->setArmorContents($this->lastKnownInv->getArmorContents());
                         $this->owner->getInventory()->sendArmorContents($this->owner);
                         $this->owner->getInventory()->setContents($this->lastKnownInv->getContents());
                         $this->owner->getInventory()->sendContents($this->owner);
                         $this->lastKnownInv = null;
-                        var_dump($this->lastKnownInv);
+                        $this->owner->sendMessage(TF::GOLD . "You are no longer viewing " . TF::BOLD . TF::DARK_AQUA . $this->target->getName() . TF::RESET . TF::GOLD . "'s inventory!");
                 }
         }
         

@@ -6,7 +6,7 @@ use pocketmine\command\CommandExecutor;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
-use pocketmine\utils\TextFormat;
+use pocketmine\utils\TextFormat as TF;
 
 use inventoryclear\Main;
 
@@ -27,16 +27,18 @@ class ViewInv implements CommandExecutor {
                                         if($target instanceof Player) {
                                                 $this->plugin->viewInventory($sender, $target);
                                         } else {
-                                                $sender->sendMessage(TextFormat::RED . "Sorry, " . $name . " is not online!");
+                                                $sender->sendMessage(TF::RED . "Sorry, " . $name . " is not online!");
                                         }
                                 } else {
-                                        $sender->sendMessage(TextFormat::RED . "You don't have permissions to use this command.");
+                                        $sender->sendMessage(TF::RED . "You don't have permissions to use this command.");
                                 }
+                        } elseif($this->plugin->isViewing($sender->getName())) {
+                                $this->plugin->stopViewing($sender->getName());
                         } else {
-                                $sender->sendMessage(TextFormat::RED . "Please specify a player!");
+                                $sender->sendMessage(TF::RED . "Please specify a player!");
                         }
                 } else {
-                        $sender->sendMessage(TextFormat::RED . "Please run this command in-game!");
+                        $sender->sendMessage(TF::RED . "Please run this command in-game!");
                 }
         }
 

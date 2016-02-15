@@ -28,7 +28,7 @@ namespace inventoryclear;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
-use pocketmine\utils\TextFormat;
+use pocketmine\utils\TextFormat as TF;
 use pocketmine\Player;
 use pocketmine\inventory\PlayerInventory;
 use pocketmine\command\PluginCommand;
@@ -48,7 +48,7 @@ class Main extends PluginBase {
                 $this->loadConfigs();
                 $this->registerCommands();
                 new EventListener($this);
-                $this->getLogger()->info(TextFormat::GREEN . "InventoryClear v1.3 by JackNoordhuis has been enabled!");
+                $this->getLogger()->info(TF::GREEN . "InventoryClear v2.0.0 by JackNoordhuis has been enabled!");
         }
 
         public function loadConfigs() {
@@ -72,7 +72,7 @@ class Main extends PluginBase {
         }
 
         public function onDisable() {
-                $this->getLogger()->info(TextFormat::DARK_GREEN . "InventoryClear v1.3 by JackNoordhuis has been disabled!");
+                $this->getLogger()->info(TF::DARK_GREEN . "InventoryClear v2.0.0 by JackNoordhuis has been disabled!");
         }
 
         public function clearInventory(Player $player, CommandSender $sender = null) {
@@ -80,15 +80,25 @@ class Main extends PluginBase {
                         $player->getInventory()->clearAll();
                 }
                 if($sender instanceof CommandSender) {
-                        $player->sendMessage(TextFormat::GOLD . "Your inventory has been cleared by " . TextFormat::RESET . TextFormat::BOLD . TextFormat::AQUA . $sender->getName() . TextFormat::RESET . TextFormat::GOLD . "!");
-                        $sender->sendMessage(TextFormat::GOLD . "Successfully cleared " . TextFormat::RESET . TextFormat::BOLD . TextFormat::AQUA . $player->getName() . TextFormat::RESET . TextFormat::GOLD . "'s inventory!");
+                        $player->sendMessage(TF::GOLD . "Your inventory has been cleared by " . TF::BOLD . TF::DARK_AQUA . $sender->getName() . TF::RESET . TF::GOLD . "!");
+                        $sender->sendMessage(TF::GOLD . "Successfully cleared " . TF::BOLD . TF::DARK_AQUA . $player->getName() . TF::RESET . TF::GOLD . "'s inventory!");
                 } else {
-                        $player->sendMessage(TextFormat::GOLD . "Your inventory was cleared successfully!");
+                        $player->sendMessage(TF::GOLD . "Your inventory was cleared successfully!");
                 }
         }
         
         public function viewInventory(Player $player, Player $target) {
                 $this->viewing[$player->getName()] = new ViewSession($player, $target, true);
+        }
+        
+        public function isViewing($name) {
+                return isset($this->viewing[$name]) and $this->viewing[$name] instanceof ViewSession;
+        }
+        
+        public function stopViewing($name) {
+                if(!$this->isViewing($name)) return;
+                $this->viewing[$name]->end();
+                unset($this->viewing[$name]);
         }
 
 }
