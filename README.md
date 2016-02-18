@@ -18,11 +18,11 @@ All plugins and code included in the repository are protected by the General Pub
     - Allows players to toggle sneaking by running the /sneak command
 - **WorldProtector**
     - Controls block breaking, placing, interaction and player damage through the use of permission nodes
+- **Dummy-Kits**
+    - Needs some more work (custom skins etc)
 
 ### Not working or unfinished plugins
 - **ChatLog**
     - Currently unfinished
-- **Dummy-Kits**
-    - Needs to be updated for 0.13 and is currently unfinished
 - **KillMoneyFix**
     - Needs to be updated
