@@ -46,7 +46,7 @@ class DummyManager {
                         if(isset($parts[1]) and $parts[1] === "yml") {
                                 $data = (new Config($this->path . $dummy, Config::YAML))->getAll();
                                 if(!$this->isSpawned($data["name"])) {
-                                        $this->spawn($data["name"], $data["description"], $data["level"], self::parsePos($data["pos"]), $data["yaw"], $data["pitch"], self::parseItem($data["hand-item"]), self::parseArmor($data["armor"]), (bool) $data["look"], (bool) $data["knockback"], $data["kits"], $data["commands"]);
+                                        $this->spawn($data["name"], $data["description"], $data["level"], Main::parsePos($data["pos"]), $data["yaw"], $data["pitch"], Main::parseItem($data["hand-item"]), Main::parseArmor($data["armor"]), (bool) $data["look"], (bool) $data["knockback"], $data["kits"], $data["commands"]);
                                 } else {
                                         continue;
                                 }
@@ -56,7 +56,7 @@ class DummyManager {
                 }
         }
 
-        public function spawn($name, $description, $level, Vector3 $pos, $yaw, $pitch, Item $handItem, array $armor, $look, $knockback, array $kits, array $commands) {
+        public function spawn($name, $description, $level, Vector3 $pos, $yaw, $pitch, Item $handItem, array $armor, $look = true, $knockback = false, array $kits = [], array $commands = []) {
                 $nbt = new Compound;
                 
                 $nbt->Pos = new Enum("Pos", [
@@ -81,8 +81,8 @@ class DummyManager {
                 $nbt->DummyData = new Compound("DummyData", [
                     "Name" => new String("Name", $name),
                     "Description" => new String("Description", $description),
-                    "Kits" => new Enum("Kits", DummyManager::array2Compound($kits)),
-                    "Commands" => new Enum("Commands", DummyManager::array2Compound($commands)),
+                    "Kits" => new Enum("Kits", Main::array2StringTag($kits)),
+                    "Commands" => new Enum("Commands", Main::array2StringTag($commands)),
                     "Look" => new Byte("Look", ($look ? 1 : 0)),
                     "Knockback" => new Byte("Knockback", ($knockback ? 1 : 0))
                 ]);
@@ -114,41 +114,6 @@ class DummyManager {
         
         public function isSpawned($name) {
                 return is_file($this->path . "data" . DIRECTORY_SEPARATOR . Main::removeColors($name) . ".npc");
-        }
-        
-        public static function array2Compound(array $array) {
-                $temp = [];
-                foreach($array as $key => $data) {
-                        $temp[] = new String($key, $data);
-                }
-                return $temp;
-        }
-        
-        public static function parsePos($string) {
-                $temp = explode(",", str_replace(" ", "", $string));
-                if(isset($temp[2])) {
-                        return new Vector3($temp[0], $temp[1], $temp[2]);
-                } else {
-                        return;
-                }
-        }
-        
-        public static function parseArmor($string) {
-                $temp = explode(",", str_replace(" ", "", $string));
-                if(isset($temp[3])) {
-                        return [Item::get($temp[0]), Item::get($temp[1]), Item::get($temp[2]), Item::get($temp[3])];
-                } else {
-                        return [];
-                }
-        }
-        
-        public static function parseItem($string) {
-                $temp = explode(",", str_replace(" ", "", $string));
-                if(isset($temp[2])) {
-                        return Item::get($temp[0], $temp[1], $temp[2]);
-                } else {
-                        return;
-                }
         }
         
 }

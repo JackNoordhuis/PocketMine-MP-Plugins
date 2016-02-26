@@ -34,7 +34,7 @@ class KitManager {
                         $parts = explode(".", $kit);
                         if(isset($parts[1]) and $parts[1] === "yml") {
                                 $data = (new Config($this->path . $kit, Config::YAML))->getAll();
-                                $this->registerKit((string) $data["name"], self::parseArmor($data["armor"]), self::parseItems($data["items"]), self::parseEffects($data["effects"]), (bool) $data["clear-inv"], (bool) $data["clear-effects"]);
+                                $this->registerKit((string) $data["name"], Main::parseArmor($data["armor"]), Main::parseItems($data["items"]), Main::parseEffects($data["effects"]), (bool) $data["clear-inv"], (bool) $data["clear-effects"]);
                         } else {
                                 continue;
                         }
@@ -75,41 +75,6 @@ class KitManager {
                         $player->addEffect($effect);
                 }
                 $player->sendMessage("You have recivied the " . $kit->getName() . " kit!");
-        }
-
-        public static function parseArmor($string) {
-                $temp = explode(",", str_replace(" ", "", $string));
-                if(isset($temp[3])) {
-                        return [Item::get($temp[0]), Item::get($temp[1]), Item::get($temp[2]), Item::get($temp[3])];
-                } else {
-                        return [];
-                }
-        }
-
-        public static function parseItems(array $strings) {
-                $items = [];
-                foreach($strings as $string) {
-                        $temp = explode(",", str_replace(" ", "", $string));
-                        if(isset($temp[2])) {
-                                $items[] = Item::get($temp[0], $temp[1], $temp[2]);
-                        } else {
-                                continue;
-                        }
-                }
-                return $items;
-        }
-
-        public static function parseEffects(array $strings) {
-                $effects = [];
-                foreach($strings as $string) {
-                        $temp = explode(",", str_replace(" ", "", $string));
-                        if(!isset($temp[3])) {
-                                $effects[] = Effect::getEffectByName($temp[0])->setAmplifier($temp[1])->setDuration(20 * $temp[2]);
-                        } else {
-                                continue;
-                        }
-                }
-                return $effects;
         }
 
 }

@@ -14,6 +14,8 @@ use dummykits\skin\SkinManager;
 
 class Main extends PluginBase {
         
+        public static $instance = null;
+        
         public $kitManager = null;
         
         public $dummyManager = null;
@@ -21,10 +23,15 @@ class Main extends PluginBase {
         public $skinManager = null;
         
         public function onEnable() {
+                self::$instance = $this;
                 $this->registerEntities();
                 $this->setKitManager();
                 $this->setDummyManager();
                 $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+        }
+        
+        public static function getInstance() {
+                return self::$instance;
         }
         
         public function registerEntities() {
@@ -106,6 +113,62 @@ class Main extends PluginBase {
                 $string = TF::clean($string);
                 
                 return $string;
+        }
+        
+        public static function parseArmor($string) {
+                $temp = explode(",", str_replace(" ", "", $string));
+                if(isset($temp[3])) {
+                        return [Item::get($temp[0]), Item::get($temp[1]), Item::get($temp[2]), Item::get($temp[3])];
+                } else {
+                        return [];
+                }
+        }
+
+        public static function parseItems(array $strings) {
+                $items = [];
+                foreach($strings as $string) {
+                        $items[] = self::parseItem($string);
+                }
+                return $items;
+        }
+
+        public static function parseEffects(array $strings) {
+                $effects = [];
+                foreach($strings as $string) {
+                        $temp = explode(",", str_replace(" ", "", $string));
+                        if(!isset($temp[3])) {
+                                $effects[] = Effect::getEffectByName($temp[0])->setAmplifier($temp[1])->setDuration(20 * $temp[2]);
+                        } else {
+                                continue;
+                        }
+                }
+                return $effects;
+        }
+        
+        public static function parsePos($string) {
+                $temp = explode(",", str_replace(" ", "", $string));
+                if(isset($temp[2])) {
+                        return new Vector3($temp[0], $temp[1], $temp[2]);
+                } else {
+                        return;
+                }
+        }
+        
+        public static function parseItem($string) {
+                $temp = explode(",", str_replace(" ", "", $string));
+                if(isset($temp[2])) {
+                        return Item::get($temp[0], $temp[1], $temp[2]);
+                } else {
+                        return;
+                }
+        }
+        
+        public static function array2StringTag(array $array) {
+                $temp = [];
+                foreach($array as $key => $data) {
+                        $temp[] = new String($key, $data);
+                }
+                return $temp;
         }
         
 }

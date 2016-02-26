@@ -88,8 +88,8 @@ class HumanDummy extends Human implements Dummy {
                 $this->namedtag->DummyData = new Compound("DummyData", [
                     "Name" => new String("Name", $this->customName),
                     "Description" => new String("Description", $this->customDescription),
-                    "Kits" => new Enum("Kits", DummyManager::array2Compound($this->kits)),
-                    "Commands" => new Enum("Commands", DummyManager::array2Compound($this->commands)),
+                    "Kits" => new Enum("Kits", Main::array2StringTag($this->kits)),
+                    "Commands" => new Enum("Commands", Main::array2StringTag($this->commands)),
                     "Look" => new Byte("Look", ($this->move ? 1 : 0)),
                     "Knockback" => new Byte("Knockback", ($this->knockback ? 1 : 0))
                 ]);
@@ -115,7 +115,7 @@ class HumanDummy extends Human implements Dummy {
                                 }
                         }
                         if(isset($this->namedtag->DummyData["Look"])) {
-                                $this->setMove( (bool) $this->namedtag->DummyData["Look"]);
+                                $this->setMove((bool) $this->namedtag->DummyData["Look"]);
                         }
                         if(isset($this->namedtag->DummyData["Knockback"])) {
                                 $this->setKnockback((bool) $this->namedtag->DummyData["Knockback"]);
