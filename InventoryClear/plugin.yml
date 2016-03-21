@@ -3,7 +3,7 @@ author: Jack Noordhuis
 version: 2.0.0
 description: Basic plugin that aloows you to view and clear a players inventory with ease.
 main: \inventoryclear\Main
-api: 1.13.0
+api: 2.0.0
      
 permissions:
     inventoryclear.clearinv.other:
