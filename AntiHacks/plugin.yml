@@ -1,0 +1,17 @@
+name: AntiHacks
+author: JackNoordhuis
+description: Implements extremely basic and highly config anti-hacks to your server
+version: 1.0.0
+main: antihacks\Main
+api:
+    - 1.0.0
+    - 2.0.0
+
+permissions:
+    antihacks:
+        description: "AtiHacks main permission node"
+        default: op
+        children:
+            antihacks.exempt:
+                description: "Allows users to bypass the antihacks"
+                default: op

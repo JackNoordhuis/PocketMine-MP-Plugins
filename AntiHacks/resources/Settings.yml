@@ -1,0 +1,17 @@
+---
+#
+#  AntiHacks v1.0.0 Configeration file - Settings.yml
+#
+# The number of seconds a player can be in the air before being kicked
+in-air-threshold: 6
+#
+# The number of times a player can be tagged as jump hacking before being kicked
+jump-tag-threshold: 3
+#
+# How high does a player have to jump to be considered jump hacking in blocks
+jump-blocks: 2
+
+messages:
+    flying-kick: "&l&cYou have been kicked for fly hacks!&r &o&6Please disable mods to play.&r"
+    jumping-kick: "&l&cYou have been kicked for jump hacks!&r &o&6Please disable mods to play.&r"
+...
