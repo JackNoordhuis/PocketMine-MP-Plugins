@@ -1,0 +1,8 @@
+name: AutoInv
+author: JackNoordhuis
+description: Limits the amount of item entitys in your server by adding drops straight to entities inventories
+version: 1.0.0
+main: autoinv\Main
+api:
+    - 1.0.0
+    - 2.0.0
