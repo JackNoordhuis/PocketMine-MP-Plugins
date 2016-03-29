@@ -1,6 +1,6 @@
 name: DummyKits
 author: JackNoordhuis
 description: Adds some cool Entitys that do stuff!
-version: 0.0.1_Beta
+version: 0.0.2_Beta
 main: dummykits\Main
 api: 2.0.0
