@@ -8,7 +8,7 @@ use pocketmine\Player;
 use pocketmine\network\protocol\AddPlayerPacket;
 use pocketmine\network\protocol\MovePlayerPacket;
 
-use pocketmine\nbt\tag\String;
+use pocketmine\nbt\tag\StringTag;
 use pocketmine\nbt\tag\Byte;
 use pocketmine\nbt\tag\Enum;
 use pocketmine\nbt\tag\Compound;
@@ -86,12 +86,12 @@ class HumanDummy extends Human implements Dummy {
         public function saveNBT() {
                 parent::saveNBT();
                 $this->namedtag->DummyData = new Compound("DummyData", [
-                    "Name" => new String("Name", $this->customName),
-                    "Description" => new String("Description", $this->customDescription),
-                    "Kits" => new Enum("Kits", Main::array2StringTag($this->kits)),
-                    "Commands" => new Enum("Commands", Main::array2StringTag($this->commands)),
-                    "Look" => new Byte("Look", ($this->move ? 1 : 0)),
-                    "Knockback" => new Byte("Knockback", ($this->knockback ? 1 : 0))
+                    "Name" => new StringTag("Name", $this->customName),
+                    "Description" => new StringTag("Description", $this->customDescription),
+                    "Kits" => new EnumTag("Kits", Main::array2StringTag($this->kits)),
+                    "Commands" => new EnumTag("Commands", Main::array2StringTag($this->commands)),
+                    "Look" => new ByteTag("Look", ($this->move ? 1 : 0)),
+                    "Knockback" => new ByteTag("Knockback", ($this->knockback ? 1 : 0))
                 ]);
         }
         

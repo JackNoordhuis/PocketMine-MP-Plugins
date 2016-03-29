@@ -5,6 +5,7 @@ namespace dummykits;
 use pocketmine\plugin\PluginBase;
 use pocketmine\entity\Entity;
 use pocketmine\utils\TextFormat as TF;
+use pocketmine\nbt\tag\StringTag;
 
 use dummykits\EventListener;
 use dummykits\entity\HumanDummy;
@@ -166,7 +167,7 @@ class Main extends PluginBase {
         public static function array2StringTag(array $array) {
                 $temp = [];
                 foreach($array as $key => $data) {
-                        $temp[] = new String($key, $data);
+                        $temp[] = new StringTag($key, $data);
                 }
                 return $temp;
         }

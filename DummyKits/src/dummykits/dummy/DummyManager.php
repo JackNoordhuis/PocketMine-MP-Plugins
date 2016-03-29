@@ -8,14 +8,14 @@ use pocketmine\item\Item;
 use pocketmine\entity\Entity;
 use pocketmine\level\Level;
 
-use pocketmine\nbt\tag\Byte;
-use pocketmine\nbt\tag\Compound;
-use pocketmine\nbt\tag\Double;
-use pocketmine\nbt\tag\Enum;
-use pocketmine\nbt\tag\Float;
+use pocketmine\nbt\tag\ByteTag;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\nbt\tag\DoubleTag;
+use pocketmine\nbt\tag\EnumTag;
+use pocketmine\nbt\tag\FloatTag;
 use pocketmine\nbt\NBT;
-use pocketmine\nbt\tag\Short;
-use pocketmine\nbt\tag\String;
+use pocketmine\nbt\tag\ShortTag;
+use pocketmine\nbt\tag\StringTag;
 
 use dummykits\Main;
 use dummykits\entity\HumanDummy;
@@ -57,34 +57,34 @@ class DummyManager {
         }
 
         public function spawn($name, $description, $level, Vector3 $pos, $yaw, $pitch, Item $handItem, array $armor, $look = true, $knockback = false, array $kits = [], array $commands = []) {
-                $nbt = new Compound;
+                $nbt = new CompoundTag;
                 
-                $nbt->Pos = new Enum("Pos", [
-                    new Double("", $pos->x),
-                    new Double("", $pos->y),
-                    new Double("", $pos->z)
+                $nbt->Pos = new EnumTag("Pos", [
+                    new DoubleTag("", $pos->x),
+                    new DoubleTag("", $pos->y),
+                    new DoubleTag("", $pos->z)
                 ]);
                 
-                $nbt->Motion = new Enum("Motion", [
-                    new Double("", 0),
-                    new Double("", 0),
-                    new Double("", 0)
+                $nbt->Motion = new EnumTag("Motion", [
+                    new DoubleTag("", 0),
+                    new DoubleTag("", 0),
+                    new DoubleTag("", 0)
                 ]);
                 
-                $nbt->Rotation = new Enum("Rotation", [
-                    new Float("", $yaw),
-                    new Float("", $pitch)
+                $nbt->Rotation = new EnumTag("Rotation", [
+                    new FloatTag("", $yaw),
+                    new FloatTag("", $pitch)
                 ]);
                 
-                $nbt->Health = new Short("Health", 1);
+                $nbt->Health = new ShortTag("Health", 1);
                 
-                $nbt->DummyData = new Compound("DummyData", [
-                    "Name" => new String("Name", $name),
-                    "Description" => new String("Description", $description),
-                    "Kits" => new Enum("Kits", Main::array2StringTag($kits)),
-                    "Commands" => new Enum("Commands", Main::array2StringTag($commands)),
-                    "Look" => new Byte("Look", ($look ? 1 : 0)),
-                    "Knockback" => new Byte("Knockback", ($knockback ? 1 : 0))
+                $nbt->DummyData = new CompoundTag("DummyData", [
+                    "Name" => new StringTag("Name", $name),
+                    "Description" => new StringTag("Description", $description),
+                    "Kits" => new EnumTag("Kits", Main::array2StringTag($kits)),
+                    "Commands" => new EnumTag("Commands", Main::array2StringTag($commands)),
+                    "Look" => new ByteTag("Look", ($look ? 1 : 0)),
+                    "Knockback" => new ByteTag("Knockback", ($knockback ? 1 : 0))
                 ]);
                 
                 if(($level = $this->plugin->getServer()->getLevelByName($level)) instanceof Level) {
