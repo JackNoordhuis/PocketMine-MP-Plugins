@@ -12,6 +12,7 @@ namespace autoinv;
 
 use pocketmine\event\Listener;
 use pocketmine\inventory\InventoryHolder;
+use pocketmine\block\Block;
 
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\entity\EntityDeathEvent;
@@ -107,8 +108,19 @@ class EventListener implements Listener {
                                 }
                         }
                         if($nearby instanceof InventoryHolder) {
-                                foreach($event->getBlockList() as $blocks) {
-                                        $nearby->getInventory()->addItem($blocks);
+                                $disallowed = [
+                                    Block::TNT,
+                                    Block::FIRE,
+                                    Block::LAVA,
+                                    Block::WATER,
+                                    Block::STILL_LAVA,
+                                    Block::STILL_WATER,
+                                ];
+                                foreach($event->getBlockList() as $block) {
+                                        if(isset($disallowed[$block->getId()])) {
+                                                continue;
+                                        }
+                                        $nearby->getInventory()->addItem($block);
                                 }
                         } else {
                                 $event->setBlockList([]);
