@@ -107,16 +107,16 @@ class EventListener implements Listener {
                                         $entity = $nearby;
                                 }
                         }
+                        $disallowed = [
+                            Block::TNT,
+                            Block::FIRE,
+                            Block::LAVA,
+                            Block::WATER,
+                            Block::STILL_LAVA,
+                            Block::STILL_WATER,
+                        ];
+                        $blocks = $event->getBlockList();
                         if($nearby instanceof InventoryHolder) {
-                                $disallowed = [
-                                    Block::TNT,
-                                    Block::FIRE,
-                                    Block::LAVA,
-                                    Block::WATER,
-                                    Block::STILL_LAVA,
-                                    Block::STILL_WATER,
-                                ];
-                                $blocks = $event->getBlockList();
                                 foreach($blocks as $key => $block) {
                                         if(isset($disallowed[$block->getId()])) {
                                                 continue;
@@ -124,9 +124,8 @@ class EventListener implements Listener {
                                         $nearby->getInventory()->addItem($block);
                                         unset($blocks[$key]);
                                 }
-                        } else {
-                                $event->setBlockList($blocks);
                         }
+                        $event->setBlockList($blocks);
                 }
                 return;
         }
