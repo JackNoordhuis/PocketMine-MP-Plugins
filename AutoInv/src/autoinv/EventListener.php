@@ -60,6 +60,7 @@ class EventListener implements Listener {
                                 $event->getPlayer()->getInventory()->addItem($drop);
                         }
                 }
+                $event->setDrops([]);
         }
         
         /**
@@ -100,7 +101,7 @@ class EventListener implements Listener {
                         $explosive = $event->getEntity();
                         $closest = PHP_INT_MAX;
                         $entity = null;
-                        foreach($explosive->getLevel()->getNearbyEntities($explosive->getBoundingBox()->grow(6, 6, 6)) as $nearby) {
+                        foreach($explosive->getLevel()->getNearbyEntities($explosive->getBoundingBox()->grow(24, 24, 24)) as $nearby) {
                                 if($explosive->distance($nearby) <= $closest) {
                                         $entity = $nearby;
                                 }
