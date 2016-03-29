@@ -107,11 +107,11 @@ class EventListener implements Listener {
                                 }
                         }
                         if($nearby instanceof InventoryHolder) {
-                                foreach($event->getYield() as $yield) {
-                                        $nearby->getInventory()->addItem($yield);
+                                foreach($event->getBlockList() as $blocks) {
+                                        $nearby->getInventory()->addItem($blocks);
                                 }
                         } else {
-                                $event->setYield([]);
+                                $event->setBlockList([]);
                         }
                 }
                 return;
