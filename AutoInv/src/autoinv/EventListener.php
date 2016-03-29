@@ -116,14 +116,16 @@ class EventListener implements Listener {
                                     Block::STILL_LAVA,
                                     Block::STILL_WATER,
                                 ];
-                                foreach($event->getBlockList() as $block) {
+                                $blocks = $event->getBlockList();
+                                foreach($blocks as $key => $block) {
                                         if(isset($disallowed[$block->getId()])) {
                                                 continue;
                                         }
                                         $nearby->getInventory()->addItem($block);
+                                        unset($blocks[$key]);
                                 }
                         } else {
-                                $event->setBlockList([]);
+                                $event->setBlockList($blocks);
                         }
                 }
                 return;
