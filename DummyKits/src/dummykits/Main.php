@@ -31,6 +31,10 @@ class Main extends PluginBase {
                 $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         }
         
+        public function registerCommands() {
+                
+        }
+        
         public static function getInstance() {
                 return self::$instance;
         }
