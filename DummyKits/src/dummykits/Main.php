@@ -13,6 +13,9 @@ use dummykits\kit\KitManager;
 use dummykits\dummy\DummyManager;
 use dummykits\skin\SkinManager;
 
+use dummykits\command\commands\AddDummy;
+use dummykits\command\commands\EditDummy;
+
 class Main extends PluginBase {
         
         public static $instance = null;
@@ -32,7 +35,10 @@ class Main extends PluginBase {
         }
         
         public function registerCommands() {
-                
+                $this->getServer()->getCommandMap()->registerAll("dk", [
+                    new AddDummy($this),
+                    new EditDummy($this),
+                ]);
         }
         
         public static function getInstance() {

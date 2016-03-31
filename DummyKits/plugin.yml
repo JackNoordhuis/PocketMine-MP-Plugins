@@ -4,3 +4,22 @@ description: Adds some cool Entitys that do stuff!
 version: 0.0.2_Beta
 main: dummykits\Main
 api: 2.0.0
+
+permissions:
+    dummykits:
+        description: "DummyKit's main permission node"
+        default: op
+        children:
+            dummykits.command:
+                description: "DummyKit's main command permission node"
+                children:
+                    dummykits.command.add:
+                        description: "DummyKit's /AddDummy command"
+                    dummykits.command.edit:
+                        description: "DummyKit's /EditDummy permission node"
+                    dummykits.command.remove:
+                        description: "DummyKit's /RemoveDummy permission node"
+            dummykits.kit:
+                description: "DummyKit's main kit permission node"
+            dummykits.dummy:
+                description: "DummyKit's main dummy permission node"
