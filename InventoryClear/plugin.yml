@@ -11,7 +11,7 @@ permissions:
         default: op
         
     inventoryclear.clearinv.self:
-        description: Players with this permission are able to clear theor own Inventories
+        description: Players with this permission are able to clear their own Inventories
         default: true
 
     inventoryclear.viewinv:

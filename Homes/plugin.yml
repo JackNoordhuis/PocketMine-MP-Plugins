@@ -1,0 +1,18 @@
+name: Homes
+description: "Saves a home foreach player"
+main: homes\Main
+version: 0.0.1
+api:
+  - 1.0.0
+  - 2.0.0
+authors:
+  - "JackNoordhuis"
+website: https://twitter.com/JackNoordhuis
+
+commands:
+  home:
+    description: "Teleport to your home"
+    usage: "/home"
+  sethome:
+    description: "Set your home to your current position"
+    usage: "/sethome"

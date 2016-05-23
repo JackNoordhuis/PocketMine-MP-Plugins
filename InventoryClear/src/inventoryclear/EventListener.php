@@ -109,7 +109,7 @@ class EventListener implements Listener {
 
         public function onDeath(PlayerDeathEvent $event) {
                 if($this->plugin->settings["events"]["death"]) {
-                        $event->setDrops(array(Item::get(0, 0, 0)));
+                        $event->setDrops([]);
                 }
         }
 
