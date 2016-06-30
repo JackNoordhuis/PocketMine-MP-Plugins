@@ -3,7 +3,7 @@ author: Jack Noordhuis
 version: 0.0.1
 description: Allows players to fly
 main: fly\Main
-api: 1.13.0
+api: 2.0.0
 
 commands:
     fly:
