@@ -23,13 +23,8 @@ class FlyCommand implements CommandExecutor {
                                 if($sender->hasPermission("fly.command.fly")) {
                                         if($this->plugin->hasFlyingSession($sender)) {
                                                 $session = $this->plugin->getFlyingSession($sender);
-                                                if($session->getFlying()) {
-                                                        $this->plugin->getFlyingSession($sender)->setFlying(false);
-                                                        $sender->sendMessage(TF::GOLD . "You have disabled flying!");
-                                                } else {
-                                                        $this->plugin->getFlyingSession($sender)->setFlying(true);
-                                                        $sender->sendMessage(TF::GREEN . "You have enabled flying!");
-                                                }
+                                                $this->plugin->getFlyingSession($sender)->setFlying(!$session->getFlying());
+                                                $sender->sendMessage($session->getFlying() ? TF::GREEN . "You have enabled flying!" : TF::GOLD . "You have disabled flying!")
                                         }
                                 } else {
                                         $sender->sendMessage(TF::RED . "You don't have permissions to use the 'fly' command!");
