@@ -32,11 +32,7 @@ class Main extends PluginBase {
         }
     
         public function toggleSneak(Player $player) {
-                if($player->isSneaking()) {
-                        $player->setSneaking(false);
-                } else {
-                        $player->setSneaking(true);
-                }
+                $player->setSneaking(!$player->isSneaking());
         }
 
 }
