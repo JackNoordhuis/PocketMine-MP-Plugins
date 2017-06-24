@@ -1,9 +1,9 @@
 name: PvP-Stats
 author: Jack Noordhuis (CrazedMiner)
-version: 1.3
+version: 1.4
 description: Counts players kills and deaths.
 main: CrazedMiner\Main
-api: [1.12.0]
+api: [3.0.0, 3.0.0-ALPHA1, 3.0.0-ALPHA2, 3.0.0-ALPHA3, 3.0.0-ALPHA4, 3.0.0-ALPHA5]
 
 commands:
     stats:
