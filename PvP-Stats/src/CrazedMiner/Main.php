@@ -26,7 +26,7 @@ use pocketmine\IPlayer;
 use CrazedMiner\StatsCommand;
 use CrazedMiner\Providers\ProviderInterface;
 use CrazedMiner\Providers\YAMLProvider;
-use CrazedMiner\Providers\MySQLProvider;
+use CrazedMiner\Providers\MYSQLProvider;
 
 class Main extends PluginBase {
     
