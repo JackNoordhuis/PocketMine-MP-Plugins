@@ -2,7 +2,7 @@ name: DummyKits
 author: JackNoordhuis
 description: Adds some cool Entitys that do stuff!
 version: 0.0.2_Beta
-main: dummykits\Main
+main: jacknoordhuis\dummykits\Main
 api: 2.0.0
 
 permissions:

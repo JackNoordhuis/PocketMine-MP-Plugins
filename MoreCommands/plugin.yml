@@ -2,7 +2,7 @@ name: MoreCommands
 author: CrazedMiner
 version: 1.0
 description: Simple Plugin that Adds More Commands to your PocketMine Server!
-main: \MoreCommands\Main
+main: jacknoordhuis\morecommands\Main
 api: 1.8.0
 
 commands:

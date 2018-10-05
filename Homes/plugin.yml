@@ -1,6 +1,6 @@
 name: Homes
 description: "Saves a home foreach player"
-main: homes\Main
+main: jacknoordhuis\homes\Main
 version: 0.0.1
 api:
   - 1.0.0

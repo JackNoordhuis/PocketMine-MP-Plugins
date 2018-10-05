@@ -2,5 +2,5 @@ name: SimpleTest
 author: JackNoordhuis
 version: 1.0.0
 description: Simple plugin that relays certain event realted things to the player, designed for testing purposes.
-main: \simpletest\Main
+main: jacknoordhuis\simpletest\Main
 api: [1.13.0]

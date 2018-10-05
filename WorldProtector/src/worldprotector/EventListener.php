@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  */
 
-namespace worldprotector;
+namespace jacknoordhuis\worldprotector;
 
 use pocketmine\event\Listener;
 use pocketmine\Player;

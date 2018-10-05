@@ -16,14 +16,14 @@
  * GNU General Public License for more details.
 */
 
-namespace positionteller\commands;
+namespace jacknoordhuis\positionteller\commands;
 
 use pocketmine\command\CommandExecutor;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
 
-use positionteller\Main;
+use jacknoordhuis\positionteller\Main;
 
 class TogglePos implements CommandExecutor {
     

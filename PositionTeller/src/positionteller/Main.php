@@ -16,16 +16,15 @@
  * GNU General Public License for more details.
 */
 
-namespace positionteller;
+namespace jacknoordhuis\positionteller;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\Player;
 
-use positionteller\commands\TogglePos;
-use positionteller\tasks\ShowPos;
-use positionteller\EventListener;
+use jacknoordhuis\positionteller\commands\TogglePos;
+use jacknoordhuis\positionteller\tasks\ShowPos;
 
 class Main extends PluginBase {
     

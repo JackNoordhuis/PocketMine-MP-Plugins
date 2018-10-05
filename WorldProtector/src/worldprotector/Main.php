@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  */
 
-namespace worldprotector;
+namespace jacknoordhuis\worldprotector;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as TF;

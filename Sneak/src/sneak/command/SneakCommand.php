@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  */
 
-namespace sneak\command;
+namespace jacknoordhuis\sneak\command;
 
 use pocketmine\Player;
 use pocketmine\utils\TextFormat as TF;

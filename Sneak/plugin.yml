@@ -2,7 +2,7 @@ name: Sneak
 author: Jack Noordhuis
 version: 1.1.1
 description: Players can Sneak by simply using a Command!
-main: sneak\Main
+main: jacknoordhuis\sneak\Main
 api: [1.13.0]
 
 commands:

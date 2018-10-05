@@ -2,5 +2,6 @@ name: ChatLog
 author: CrazedMiner
 description: Saves all chat and commands sent by the Player to a .txt file
 version: 1.0
-main: /CrazedMiner/Main
+main: jacknoordhuis/Main
 website: CrazedMiner.weebly.com
+api: 3.0.0

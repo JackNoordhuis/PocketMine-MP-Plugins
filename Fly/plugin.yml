@@ -2,7 +2,7 @@ name: Fly
 author: Jack Noordhuis
 version: 0.0.1
 description: Allows players to fly
-main: fly\Main
+main: jacknoordhuis\fly\Main
 api: 2.0.0
 
 commands:

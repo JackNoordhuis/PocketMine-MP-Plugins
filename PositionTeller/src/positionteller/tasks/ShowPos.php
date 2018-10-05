@@ -16,12 +16,11 @@
  * GNU General Public License for more details.
 */
 
-namespace positionteller\tasks;
+namespace jacknoordhuis\positionteller\tasks;
 
 use pocketmine\scheduler\PluginTask;
-use pocketmine\utils\TextFormat as TF;
 
-use positionteller\Main;
+use jacknoordhuis\positionteller\Main;
 
 class ShowPos extends PluginTask {
     
