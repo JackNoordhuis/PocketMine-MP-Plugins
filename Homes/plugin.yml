@@ -1,13 +1,10 @@
 name: Homes
-description: "Saves a home foreach player"
+description: Allows each player that joins your server to set a home that they can teleport to!
 main: jacknoordhuis\homes\Main
-version: 0.0.1
-api:
-  - 1.0.0
-  - 2.0.0
+version: 0.0.2
+api: [3.0.0]
 authors:
   - "JackNoordhuis"
-website: https://twitter.com/JackNoordhuis
 
 commands:
   home:
