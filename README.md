@@ -26,3 +26,5 @@ All plugins and code included in the repository are protected by the General Pub
     - Currently unfinished
 - **KillMoneyFix**
     - Needs to be updated
+    
+__The content of this repo is licensed under the GNU Lesser General Public License v3. A full copy of the license is available [here](LICENSE).__
